@@ -43,5 +43,24 @@
     <string name="display">Display pharmacies within:</string>
     <string name="find">Find</string>
     <string name="title_activity_prescription_edit">Edit Prescription</string>
+    <string name="title_activity_edit_prescription">Edit Prescriptions</string>
+    <string name="name">Name</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="days">Days</string>
+    <string name="time">Time</string>
+    <string name="title_activity_doctor_edit">Edit Doctor</string>
+    <string name="send_alert">Send Alert</string>
+    <string name="phone">Phone</string>
+    <string name="number">911</string>
+    <string name="email">E-mail</string>
+    <string name="email_address">iDoctor@eyes.com</string>
+    <string name="address">Address</string>
+    <string name="addy">500 Forbes Ave</string>
 
 </resources>

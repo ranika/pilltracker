@@ -62,7 +62,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pilltracker.MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.pilltracker.EditPrescriptionActivity"
+            android:label="@string/title_activity_edit_prescription"
+            android:parentActivityName="com.example.pilltracker.PrescriptionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.PrescriptionActivity" />
+        </activity>
+        <activity
+            android:name="com.example.pilltracker.DoctorEditActivity"
+            android:label="@string/title_activity_doctor_edit"
+            android:parentActivityName="com.example.pilltracker.DoctorsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.DoctorsActivity" />
+        </activity>
     </application>
 
 </manifest>
-
