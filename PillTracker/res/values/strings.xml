@@ -52,8 +52,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
-    <string name="days">Days</string>
-    <string name="time">Time</string>
+    <string name="days">Set Days</string>
+    <string name="time">Set Time</string>
     <string name="title_activity_doctor_edit">Edit Doctor</string>
     <string name="send_alert">Send Alert</string>
     <string name="phone">Phone</string>
@@ -62,5 +62,10 @@
     <string name="email_address">iDoctor@eyes.com</string>
     <string name="address">Address</string>
     <string name="addy">500 Forbes Ave</string>
+    <string name="title_activity_reminders">Reminders</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="location">My Location</string>
+    <string name="wireless">Use wireless networks</string>
+    <string name="gps">Use GPS satellites</string>
 
 </resources>

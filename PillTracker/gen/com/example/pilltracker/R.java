@@ -41,7 +41,7 @@ public final class R {
         public static final int CheckBox04=0x7f0a0017;
         public static final int CheckBox05=0x7f0a0018;
         public static final int CheckBox06=0x7f0a0019;
-        public static final int action_settings=0x7f0a0024;
+        public static final int action_settings=0x7f0a0026;
         public static final int button1=0x7f0a000e;
         public static final int button2=0x7f0a0011;
         public static final int button3=0x7f0a0012;
@@ -60,6 +60,8 @@ public final class R {
         public static final int searchView1=0x7f0a0010;
         public static final int spinner1=0x7f0a0023;
         public static final int switch1=0x7f0a0004;
+        public static final int switch2=0x7f0a0024;
+        public static final int switch3=0x7f0a0025;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
         public static final int textView3=0x7f0a0008;
@@ -82,14 +84,18 @@ public final class R {
         public static final int activity_notes=0x7f030005;
         public static final int activity_pharmacies=0x7f030006;
         public static final int activity_prescription=0x7f030007;
-        public static final int fragment_doctor_edit=0x7f030008;
-        public static final int fragment_doctors=0x7f030009;
-        public static final int fragment_edit_prescription=0x7f03000a;
-        public static final int fragment_main=0x7f03000b;
-        public static final int fragment_med_log=0x7f03000c;
-        public static final int fragment_notes=0x7f03000d;
-        public static final int fragment_pharmacies=0x7f03000e;
-        public static final int fragment_prescription=0x7f03000f;
+        public static final int activity_reminders=0x7f030008;
+        public static final int activity_settings=0x7f030009;
+        public static final int fragment_doctor_edit=0x7f03000a;
+        public static final int fragment_doctors=0x7f03000b;
+        public static final int fragment_edit_prescription=0x7f03000c;
+        public static final int fragment_main=0x7f03000d;
+        public static final int fragment_med_log=0x7f03000e;
+        public static final int fragment_notes=0x7f03000f;
+        public static final int fragment_pharmacies=0x7f030010;
+        public static final int fragment_prescription=0x7f030011;
+        public static final int fragment_reminders=0x7f030012;
+        public static final int fragment_settings=0x7f030013;
     }
     public static final class menu {
         public static final int doctor_edit=0x7f090000;
@@ -101,6 +107,8 @@ public final class R {
         public static final int pharmacies=0x7f090006;
         public static final int prescription=0x7f090007;
         public static final int prescription_edit=0x7f090008;
+        public static final int reminders=0x7f090009;
+        public static final int settings=0x7f09000a;
     }
     public static final class string {
         public static final int action_settings=0x7f050017;
@@ -118,7 +126,9 @@ public final class R {
         public static final int family_physician=0x7f050013;
         public static final int find=0x7f05001d;
         public static final int friday=0x7f050025;
+        public static final int gps=0x7f050036;
         public static final int hello_world=0x7f050016;
+        public static final int location=0x7f050034;
         public static final int med_log=0x7f050001;
         public static final int monday=0x7f050021;
         public static final int name=0x7f050020;
@@ -148,11 +158,14 @@ public final class R {
         public static final int title_activity_pharmacies=0x7f05001b;
         public static final int title_activity_prescription=0x7f05000f;
         public static final int title_activity_prescription_edit=0x7f05001e;
+        public static final int title_activity_reminders=0x7f050032;
+        public static final int title_activity_settings=0x7f050033;
         public static final int to_do=0x7f050019;
         public static final int today=0x7f050009;
         public static final int tuesday=0x7f050022;
         public static final int vitamin=0x7f05000c;
         public static final int wednesday=0x7f050023;
+        public static final int wireless=0x7f050035;
     }
     public static final class style {
         /** 
