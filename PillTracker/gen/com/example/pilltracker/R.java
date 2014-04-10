@@ -26,10 +26,13 @@ public final class R {
     }
     public static final class drawable {
         public static final int arrow=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int arrow_left=0x7f020001;
+        public static final int arrow_right=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int left_arrow=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090010;
+        public static final int action_settings=0x7f090016;
         public static final int button1=0x7f090009;
         public static final int button2=0x7f09000a;
         public static final int button3=0x7f09000b;
@@ -37,6 +40,9 @@ public final class R {
         public static final int button5=0x7f09000d;
         public static final int button6=0x7f09000e;
         public static final int button7=0x7f09000f;
+        public static final int checkBox1=0x7f090011;
+        public static final int checkBox2=0x7f090012;
+        public static final int checkBox3=0x7f090014;
         public static final int container=0x7f090000;
         public static final int textView1=0x7f090001;
         public static final int textView2=0x7f090002;
@@ -46,24 +52,37 @@ public final class R {
         public static final int textView6=0x7f090006;
         public static final int textView7=0x7f090007;
         public static final int view1=0x7f090008;
+        public static final int view2=0x7f090010;
+        public static final int view3=0x7f090013;
+        public static final int view4=0x7f090015;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int fragment_main=0x7f030001;
+        public static final int activity_med_log=0x7f030001;
+        public static final int fragment_main=0x7f030002;
+        public static final int fragment_med_log=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f080000;
+        public static final int med_log=0x7f080001;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int doctors=0x7f050005;
         public static final int med_log=0x7f050002;
+        public static final int nasal=0x7f05000f;
         public static final int notes=0x7f050007;
         public static final int pharmacies=0x7f050006;
+        public static final int pill=0x7f05000c;
         public static final int prescriptions=0x7f050003;
         public static final int reminders=0x7f050004;
         public static final int settings=0x7f050008;
+        public static final int ten_am=0x7f05000b;
+        public static final int ten_pm=0x7f05000e;
+        public static final int title_activity_med_log=0x7f050009;
+        public static final int today=0x7f05000a;
+        public static final int vitamin=0x7f05000d;
     }
     public static final class style {
         /** 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pill Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="med_log">Medication Log</string>
+    <string name="prescriptions">Prescriptions</string>
+    <string name="reminders">Reminders</string>
+    <string name="doctors">Doctors</string>
+    <string name="pharmacies">Pharmacies</string>
+    <string name="notes">Notes</string>
+    <string name="settings">Settings</string>
+
+    <color name="black">#CCCCCC</color>
+
+    <string name="title_activity_med_log">Medication Log</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
