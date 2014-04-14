@@ -16,10 +16,6 @@ public class EditPrescriptionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_edit_prescription);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 	}
 
 	@Override

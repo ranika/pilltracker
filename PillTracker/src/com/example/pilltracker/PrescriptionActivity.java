@@ -2,6 +2,7 @@ package com.example.pilltracker;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,11 +16,6 @@ public class PrescriptionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_prescription);
-
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 	}
 
 	@Override
@@ -57,6 +53,12 @@ public class PrescriptionActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+	
+	public void editPrescription(View view)
+	{
+		Intent intent = new Intent(this, EditPrescriptionActivity.class); 
+		startActivity(intent);
 	}
 
 }

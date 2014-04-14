@@ -137,7 +137,8 @@
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startMedLog" />
     
     <Button
         android:id="@+id/button2"
@@ -146,7 +147,8 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startPrescriptions" />
     
     <Button
         android:id="@+id/button3"
@@ -155,7 +157,8 @@
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startReminders" />
     
     <Button
         android:id="@+id/button4"
@@ -164,7 +167,8 @@
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startDoctors" />
     
     <Button
         android:id="@+id/button5"
@@ -173,7 +177,8 @@
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startPharmacies" />
     
     <Button
         android:id="@+id/button6"
@@ -182,7 +187,8 @@
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right" 
+        android:onClick="startNotes"/>
     
     <Button
         android:id="@+id/button7"
@@ -191,6 +197,7 @@
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="startSettings" />
 
 </RelativeLayout>

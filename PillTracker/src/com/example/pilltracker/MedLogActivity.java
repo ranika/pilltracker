@@ -16,10 +16,6 @@ public class MedLogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_med_log);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 	}
 
 	@Override

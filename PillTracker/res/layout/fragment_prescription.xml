@@ -109,7 +109,8 @@
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="editPrescription" />
     
     <Button
         android:id="@+id/button4"

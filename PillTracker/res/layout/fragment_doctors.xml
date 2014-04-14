@@ -64,7 +64,8 @@
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/arrow_right" />
+        android:drawableRight="@drawable/arrow_right"
+        android:onClick="editDoctor" />
     
     <TextView
         android:id="@+id/textView3"

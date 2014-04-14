@@ -2,6 +2,7 @@ package com.example.pilltracker;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -59,5 +60,47 @@ public class MainActivity extends Activity {
             return rootView;
         }
     }
-
+    
+    public void startMedLog(View view)
+    {
+    	Intent intent = new Intent(this, MedLogActivity.class); 
+    	startActivity(intent); 
+    }
+    
+    public void startPrescriptions(View view)
+    {
+    	Intent intent = new Intent(this, PrescriptionActivity.class);
+    	startActivity(intent); 
+    }
+    
+    public void startReminders(View view)
+    {
+    	Intent intent = new Intent(this, RemindersActivity.class );
+    	startActivity(intent); 
+    }
+    
+    public void startDoctors(View view)
+    {
+    	Intent intent = new Intent(this, DoctorsActivity.class);
+    	startActivity(intent); 
+    }
+    
+    public void startPharmacies(View view)
+    {
+    	Intent intent = new Intent(this, PharmaciesActivity.class); 
+    	startActivity(intent); 
+    }
+    
+    public void startNotes(View view)
+    {
+    	Intent intent = new Intent(this, NotesActivity.class);
+    	startActivity(intent); 
+    }
+    
+    public void startSettings(View view)
+    {
+    	Intent intent = new Intent(this, SettingsActivity.class);
+    	startActivity(intent); 
+    }
+    
 }
