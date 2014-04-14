@@ -31,7 +31,7 @@
                 android:value="com.example.pilltracker.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.pilltracker.PrescriptionActivity"
+            android:name="prescriptions.PrescriptionActivity"
             android:label="@string/title_activity_prescription"
             android:parentActivityName="com.example.pilltracker.MainActivity" >
             <meta-data
@@ -39,7 +39,7 @@
                 android:value="com.example.pilltracker.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.pilltracker.DoctorsActivity"
+            android:name="doctors.DoctorsActivity"
             android:label="@string/title_activity_doctors"
             android:parentActivityName="com.example.pilltracker.MainActivity" >
             <meta-data
@@ -63,17 +63,17 @@
                 android:value="com.example.pilltracker.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.pilltracker.EditPrescriptionActivity"
+            android:name="prescriptions.EditPrescriptionActivity"
             android:label="@string/title_activity_edit_prescription"
-            android:parentActivityName="com.example.pilltracker.PrescriptionActivity" >
+            android:parentActivityName="prescriptions.PrescriptionActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pilltracker.PrescriptionActivity" />
         </activity>
         <activity
-            android:name="com.example.pilltracker.DoctorEditActivity"
+            android:name="doctors.DoctorEditActivity"
             android:label="@string/title_activity_doctor_edit"
-            android:parentActivityName="com.example.pilltracker.DoctorsActivity" >
+            android:parentActivityName="doctors.DoctorsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pilltracker.DoctorsActivity" />

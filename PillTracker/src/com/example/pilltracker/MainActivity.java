@@ -1,5 +1,12 @@
 package com.example.pilltracker;
 
+import miscScreens.NotesActivity;
+import miscScreens.PharmaciesActivity;
+import miscScreens.SettingsActivity;
+import prescriptions.PrescriptionActivity;
+import reminders.MedLogActivity;
+import reminders.RemindersActivity;
+import doctors.DoctorsActivity;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
@@ -15,7 +22,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.a_pilltracker_mainactivity);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
@@ -56,7 +63,7 @@ public class MainActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.f_pilltracker_mainactivity, container, false);
             return rootView;
         }
     }

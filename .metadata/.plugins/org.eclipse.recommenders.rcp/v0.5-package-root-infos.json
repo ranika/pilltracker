@@ -1,0 +1,28 @@
+[
+  {
+    "symbolicName": "android-support-v4",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "ded9acc6a9792b8f1afc470f0c9cd36d178914cd",
+    "jarFileModificationDate": "2014-04-13T11:36:30.588-04:00",
+    "location": "C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\libs\\android-support-v4.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "android",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "7f972d2aa0fcb741fc84a9a10c98555f6f431a7a",
+    "jarFileModificationDate": "2014-03-18T22:59:54.897-04:00",
+    "location": "C:\\Users\\Niharika\\Downloads\\adt-bundle-windows-x86_64-20131030\\adt-bundle-windows-x86_64-20131030\\sdk\\platforms\\android-19\\android.jar",
+    "javaRuntime": false
+  }
+]

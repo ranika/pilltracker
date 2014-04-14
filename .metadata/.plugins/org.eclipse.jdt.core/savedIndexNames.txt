@@ -1,4 +1,2 @@
-INDEX VERSION 1.126+C:\Users\Ranika\Documents\GitHub\pilltracker\.metadata\.plugins\org.eclipse.jdt.core
-111570806.index
+INDEX VERSION 1.126+C:\Users\Niharika\Documents\S14\18641_javasmrtph\pilltracker\.metadata\.plugins\org.eclipse.jdt.core
 3561564277.index
-1840690297.index
