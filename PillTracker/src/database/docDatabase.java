@@ -2,6 +2,10 @@ package database;
 
 import java.util.ArrayList;
 
+import entities.Doctor;
+import entities.DoctorImpl;
+
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,7 +19,7 @@ public class docDatabase extends SQLiteOpenHelper{
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "doctors";
 	private static final String TABLE = "doc_details";
-	private static final String[] COLUMNS = {"id", "name", "address", "phone"};
+	private static final String[] COLUMNS = {"id", "name", "phone", "email", "address"};
 	
 	public docDatabase(Context context, String name, CursorFactory factory,
 			int version) {
@@ -33,10 +37,12 @@ public class docDatabase extends SQLiteOpenHelper{
 		CREATE_TABLE.append(" ( id INTEGER PRIMARY KEY, ");
 		// name
 		CREATE_TABLE.append(COLUMNS[1] + " text, ");
-		// address
-		CREATE_TABLE.append(COLUMNS[2] + " text, ");
 		// phone
+		CREATE_TABLE.append(COLUMNS[2] + " text, ");
+		// email
 		CREATE_TABLE.append(COLUMNS[3] + " text");
+		// address
+		CREATE_TABLE.append(COLUMNS[4] + " text");
 		CREATE_TABLE.append(" )");
 		db.execSQL(CREATE_TABLE.toString());
 	}
@@ -51,40 +57,62 @@ public class docDatabase extends SQLiteOpenHelper{
 	
 	// CRUD operations for doctors follow
 	
-	public void createDoctor(int id, String name, String address, String phone) {
+	public void createDoctor(int id, String name, String phone, String email, String address) {
 		Log.d("docDatabase", "createDoctor");
 		// enter into database
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues vals = new ContentValues();
 		vals.put(COLUMNS[0], id);
 		vals.put(COLUMNS[1], name);
-		vals.put(COLUMNS[2], address);
-		vals.put(COLUMNS[3], phone);
+		vals.put(COLUMNS[2], phone);
+		vals.put(COLUMNS[3], email);
+		vals.put(COLUMNS[4], address);
 		long error = db.insert(TABLE, null, vals);
 		db.close();
 	}
 	
-	// returns in the following format
-	// [name, address, phone]
-	public ArrayList<String> readDoctor(int id) {
+	public Doctor readDoctor(int id) {
 		Log.d("docDatebase", "readDoctor");
 		SQLiteDatabase db = this.getReadableDatabase();
 		String[] idStr = {String.valueOf(id)};
 		Cursor query = db.query(TABLE, COLUMNS, "id = ?", idStr, null, null, null, null);
-		ArrayList<String> results = new ArrayList<String>();
-		results.add(query.getString(1));
-		results.add(query.getString(2));
-		results.add(query.getString(3));
-		return results;
+		String n = query.getString(1);
+		String p = query.getString(2);
+		String e = query.getString(3);
+		String a = query.getString(4);
+		Doctor d = new DoctorImpl(id, n, p, e, a);
+		return d;
 	}
 	
-	public void updateDoctor(int id, String name, String address, String phone) {
+	public ArrayList<Doctor> readAllDoctors() {
+		Log.d("docDatabase", "readAllDoctors");
+		ArrayList<Doctor> result = new ArrayList<Doctor>();
+		// get all records
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor query = db.query(TABLE, COLUMNS, null, null, null, null, null);
+		Doctor d = null;
+		if (query.moveToFirst()) {
+			do {
+				int id = Integer.valueOf(query.getString(0));
+				String n = query.getString(1);
+				String p = query.getString(2);
+				String e = query.getString(3);
+				String a = query.getString(4);
+				d = new DoctorImpl(id, n, p, e, a);
+				result.add(d);
+			} while (query.moveToNext());
+		}
+		return result;
+	}
+	
+	public void updateDoctor(int id, String name, String phone, String email, String address) {
 		Log.d("docDatabase", "updateDoctor");
 	    SQLiteDatabase db = this.getWritableDatabase();
 	    ContentValues vals = new ContentValues();
 	    vals.put(COLUMNS[1], name);
-		vals.put(COLUMNS[2], address);
-		vals.put(COLUMNS[3], phone);
+		vals.put(COLUMNS[2], phone);
+		vals.put(COLUMNS[3], email);
+		vals.put(COLUMNS[4], address);
 	    int error = db.update(TABLE, vals, 
 	            "id = ?", new String[] { String.valueOf(id) });
 	    db.close();
@@ -95,6 +123,12 @@ public class docDatabase extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE, "id = ?", new String[] {String.valueOf(id)}); 
         db.close();
+	}
+
+	public void removeName(String name) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		String[] nameArr = {name};
+		db.delete(TABLE, "name = ?", nameArr);
 	}
 
 }

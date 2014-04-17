@@ -13,7 +13,7 @@
         android:text="@string/name" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/fdea_et1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
@@ -29,53 +29,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/fdea_et1"
         android:layout_marginTop="20dp"
         android:text="@string/send_alert" />
 
+    <!-- for future implementation 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/fdea_s1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
-        android:layout_alignRight="@+id/editText1" />
+        android:layout_alignRight="@+id/fdea_et1" />
 
     <RadioButton
-        android:id="@+id/checkBox1"
+        android:id="@+id/fdea_cb1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/switch1"
+        android:layout_below="@+id/fdea_s1"
         android:layout_marginTop="20dp"
         android:text="@string/pill" />
 
     <RadioButton
-        android:id="@+id/checkBox2"
+        android:id="@+id/fdea_cb2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox1"
-        android:layout_below="@+id/checkBox1"
+        android:layout_alignLeft="@+id/fdea_cb1"
+        android:layout_below="@+id/fdea_cb1"
         android:text="@string/vitamin" />
 
     <RadioButton
-        android:id="@+id/checkBox3"
+        android:id="@+id/fdea_cb3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox2"
-        android:layout_below="@+id/checkBox2"
+        android:layout_alignLeft="@+id/fdea_cb2"
+        android:layout_below="@+id/fdea_cb2"
         android:text="@string/nasal" />
+        
+    -->
 
+	<!-- android:layout_alignLeft="@+id/fdea_cb3" -->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox3"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="17dp"
         android:text="@string/phone" />
     
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/fdea_et2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
@@ -90,13 +94,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/fdea_et2"
         android:layout_marginTop="23dp"
         android:text="@string/email" />
     
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/fdea_et3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView4"
@@ -112,12 +116,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/fdea_et3"
         android:layout_marginTop="34dp"
         android:text="@string/address" />
     
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/fdea_et4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView5"

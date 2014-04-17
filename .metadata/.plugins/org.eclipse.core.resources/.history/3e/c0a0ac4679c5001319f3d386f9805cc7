@@ -1,0 +1,22 @@
+package businessLogic;
+
+import java.util.ArrayList;
+import com.example.pilltracker.R;
+
+public class dDb implements doctorFunctions{
+
+	@Override
+	public void userInputToDatabase() {
+		String name = findViewById(R.id.fdea_et1).getText().toString();
+		
+	}
+
+	@Override
+	public ArrayList<Doctor> readFromDatabase() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

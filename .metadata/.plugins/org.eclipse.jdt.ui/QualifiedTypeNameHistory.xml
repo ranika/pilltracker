@@ -2,4 +2,34 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.example.pilltracker.RemindersActivity"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.R.raw"/>
+<fullyQualifiedTypeName name="android.R.id"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="businessLogic.Doctor"/>
+<fullyQualifiedTypeName name="database.docDatabase"/>
+<fullyQualifiedTypeName name="entities.DoctorImpl"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="entities.Doctor"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="businessLogic.dDb"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="android.widget.Switch"/>
+<fullyQualifiedTypeName name="com.example.pilltracker.R.id"/>
+<fullyQualifiedTypeName name="android.widget.CheckBox"/>
+<fullyQualifiedTypeName name="android.widget.TimePicker"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="entities.Medication"/>
+<fullyQualifiedTypeName name="entities.MedicationImpl"/>
+<fullyQualifiedTypeName name="com.example.pilltracker.R.layout"/>
+<fullyQualifiedTypeName name="database.medDatabase"/>
+<fullyQualifiedTypeName name="businessLogic.MedicationFunctions"/>
+<fullyQualifiedTypeName name="businessLogic.mDb"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
 </qualifiedTypeNameHistroy>

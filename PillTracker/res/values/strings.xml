@@ -54,6 +54,8 @@
     <string name="sunday">Sunday</string>
     <string name="days">Set Days</string>
     <string name="time">Set Time</string>
+    <string name="prescriber">Prescriber</string>
+    <string name="comments">Comments</string>
     <string name="title_activity_doctor_edit">Edit Doctor</string>
     <string name="send_alert">Send Alert</string>
     <string name="phone">Phone</string>

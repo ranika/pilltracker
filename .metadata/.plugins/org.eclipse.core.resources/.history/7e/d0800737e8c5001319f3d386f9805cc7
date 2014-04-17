@@ -1,0 +1,124 @@
+package prescriptions;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.example.pilltracker.R;
+import com.example.pilltracker.R.id;
+import com.example.pilltracker.R.layout;
+import com.example.pilltracker.R.menu;
+
+import entities.Doctor;
+import entities.Medication;
+import entities.MedicationImpl;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+public class PrescriptionActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.f_prescriptions_prescriptionactivity);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.prescription, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.f_prescriptions_prescriptionactivity,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	public void editPrescription(View view)
+	{
+		Intent intent = new Intent(this, EditPrescriptionActivity.class); 
+		startActivity(intent);
+	}
+	
+	// private class for managing listView
+		private class MediArrayAdapter<DoctorImpl> extends ArrayAdapter<DoctorImpl> {
+
+			HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+			
+			public MediArrayAdapter(Context context, int resource,
+					List<MedicationImpl> objects) {
+				super(context, resource, objects);
+				Medication d = null;
+				// add doctors' names to list view adapter
+				for (int i = 0; i < objects.size(); i++) {
+					d = (Medication) objects.get(i);
+					mIdMap.put(d.toString(), i);
+				}
+			}
+			
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) {
+			    LayoutInflater inflater = (LayoutInflater) thisC.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			    View rowView = inflater.inflate(R.layout.listitem, parent, false);
+			    TextView mainText = (TextView) rowView.findViewById(R.id.listitemheader);
+			    TextView subText = (TextView) rowView.findViewById(R.id.listitemsub);
+			    String completeStr = ((Doctor) getItem(position)).toString();
+			    String[] splitStr = completeStr.split("|");
+			    String mainTextContent = splitStr[0];
+			    String subTextContent = splitStr[1];
+			    mainText.setText(mainTextContent);
+			    subText.setText(subTextContent);
+			    return rowView;
+			  }
+			
+			@Override
+			public long getItemId(int position) {
+				String item = ((Doctor) getItem(position)).toString();
+				return dIdMap.get(item);
+			}
+			
+			// IDs not guaranteed to stay consistent
+			@Override
+			public boolean hasStableIds() {
+				return false;
+			}
+			
+		}
+
+}

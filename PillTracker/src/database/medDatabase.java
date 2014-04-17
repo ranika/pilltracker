@@ -156,15 +156,15 @@ public class medDatabase extends SQLiteOpenHelper {
 	
 	// returns in the following format
 	// [name, prescriber, comments]
-	public ArrayList<String> readDetails(int med_id) {
+	public String[] readDetails(int med_id) {
 		Log.d("medDatebase", "readDetails");
 		SQLiteDatabase db = this.getReadableDatabase();
 		String[] idStr = {String.valueOf(med_id)};
 		Cursor query = db.query(TABLE_D, COLUMNS_D, "id = ?", idStr, null, null, null, null);
-		ArrayList<String> results = new ArrayList<String>();
-		results.add(query.getString(1));
-		results.add(query.getString(2));
-		results.add(query.getString(3));
+		String[] results = new String[3];
+		results[0] = query.getString(1);
+		results[1] = query.getString(2);
+		results[2] = query.getString(3);
 		return results;
 	}
 	

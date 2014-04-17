@@ -1,0 +1,10 @@
+package entities;
+
+public class MedicationImpl implements Medication {
+
+	private int id;
+	private String name;
+	private String prescriber;
+	private String comments;
+
+}

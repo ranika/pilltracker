@@ -11,5 +11,6 @@ public interface Doctor {
 	public int getId();
 	public String getAddress();
 	public String getPhone();
-
+	public String getEmail();
+	public String toString();
 }

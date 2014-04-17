@@ -3,5 +3,15 @@
     "location": "C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\gen",
     "status": "UNRESOLVED",
     "error": "No class path info available for \u0027C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\gen\u0027. Skipped."
+  },
+  "C:\\Users\\Niharika\\Downloads\\adt-bundle-windows-x86_64-20131030\\adt-bundle-windows-x86_64-20131030\\sdk\\platforms\\android-19\\android.jar": {
+    "location": "C:\\Users\\Niharika\\Downloads\\adt-bundle-windows-x86_64-20131030\\adt-bundle-windows-x86_64-20131030\\sdk\\platforms\\android-19\\android.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\Niharika\\Downloads\\adt-bundle-windows-x86_64-20131030\\adt-bundle-windows-x86_64-20131030\\sdk\\platforms\\android-19\\android.jar\u0027. Neither fingerprint \u00277f972d2aa0fcb741fc84a9a10c98555f6f431a7a\u0027 nor symbolic name \u0027android\u0027 are known."
+  },
+  "C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\src": {
+    "location": "C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Niharika\\Documents\\S14\\18641_javasmrtph\\pilltracker\\PillTracker\\src\u0027. Skipped."
   }
 }

@@ -1,0 +1,70 @@
+package businessLogic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import database.medDatabase;
+
+import android.content.Context;
+import android.view.View;
+
+public class mDb implements MedicationFunctions {
+	
+	private static HashMap<String, Integer> idMap = new HashMap<String, Integer>();
+
+	@Override
+	public void userInputToDatabase(View v, Context c) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public ArrayList<?> readFromDatabase(Context c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int medNameToId(String name) {
+		return idMap.get(name);
+	}
+
+	@Override
+	public String idToMedName(int id) {
+		for (Entry<String, Integer> entry : idMap.entrySet()) {
+			if (id == entry.getValue()) {
+				return entry.getKey();
+			}
+		}
+		// could not find name
+		return null;
+	}
+
+	@Override
+	public String[] daysMeds(Context c, int day) {
+		medDatabase mDb = new medDatabase(c, null, null, 0);
+		int[] allIds = idMap.values().toArray();
+		ArrayList<Integer> resultList = mDb.readReminder(id);
+
+		return null;
+	}
+
+	@Override
+	public String[] allMeds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getTimes(Context c, int id) {
+		medDatabase mDb = new medDatabase(c, null, null, 0);
+		ArrayList<Integer> resultList = mDb.readReminder(id);
+		int[] result = new int[resultList.size()];
+		for (int i = 0; i < result.length; i++) {
+			result[i] = resultList.get(i);
+		}
+		return result;
+	}
+
+}

@@ -1,0 +1,25 @@
+package businessLogic;
+
+import java.util.ArrayList;
+import android.view.View;
+import android.widget.EditText;
+
+import com.example.pilltracker.R;
+
+public class dDb implements doctorFunctions{
+
+	@Override
+	public void userInputToDatabase(View v) {
+		String name = ((EditText)v.findViewById(R.id.fdea_et1)).getText().toString();
+		
+	}
+
+	@Override
+	public ArrayList<Doctor> readFromDatabase() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

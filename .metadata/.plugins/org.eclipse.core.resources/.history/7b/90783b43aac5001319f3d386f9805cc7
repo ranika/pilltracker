@@ -1,0 +1,52 @@
+package businessLogic;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.View;
+
+public class mDb implements MedicationFunctions {
+
+	@Override
+	public void userInputToDatabase(View v, Context c) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public ArrayList<?> readFromDatabase(Context c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int medNameToId(String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String idToMedName(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] daysMeds(int day) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] allMeds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getTimes(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
