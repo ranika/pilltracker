@@ -35,7 +35,7 @@ public final class R {
         public static final int left_arrow=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0030;
+        public static final int action_settings=0x7f0a002e;
         public static final int button1=0x7f0a000a;
         public static final int button2=0x7f0a000e;
         public static final int button3=0x7f0a000f;
@@ -43,9 +43,6 @@ public final class R {
         public static final int button5=0x7f0a0017;
         public static final int button6=0x7f0a0018;
         public static final int button7=0x7f0a0019;
-        public static final int checkBox1=0x7f0a0012;
-        public static final int checkBox2=0x7f0a0014;
-        public static final int checkBox3=0x7f0a0028;
         public static final int container=0x7f0a0000;
         public static final int fda_lv=0x7f0a000d;
         public static final int fdea_et1=0x7f0a0002;
@@ -65,13 +62,16 @@ public final class R {
         public static final int fepa_s1=0x7f0a001b;
         public static final int fepa_tp1=0x7f0a0023;
         public static final int fpa_lv=0x7f0a0026;
-        public static final int listitemheader=0x7f0a002e;
-        public static final int listitemsub=0x7f0a002f;
+        public static final int listitemheader=0x7f0a002c;
+        public static final int listitemsub=0x7f0a002d;
+        public static final int mla_l=0x7f0a0027;
+        public static final int sa_cb1=0x7f0a0012;
+        public static final int sa_cb2=0x7f0a0014;
         public static final int searchView1=0x7f0a000c;
         public static final int spinner1=0x7f0a0011;
-        public static final int switch1=0x7f0a002a;
-        public static final int switch2=0x7f0a002b;
-        public static final int switch3=0x7f0a002c;
+        public static final int switch1=0x7f0a0028;
+        public static final int switch2=0x7f0a0029;
+        public static final int switch3=0x7f0a002a;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
         public static final int textView3=0x7f0a0004;
@@ -79,11 +79,9 @@ public final class R {
         public static final int textView5=0x7f0a0008;
         public static final int textView6=0x7f0a0015;
         public static final int textView7=0x7f0a0016;
-        public static final int timePicker1=0x7f0a002d;
+        public static final int timePicker1=0x7f0a002b;
         public static final int view1=0x7f0a000b;
         public static final int view2=0x7f0a0013;
-        public static final int view3=0x7f0a0027;
-        public static final int view4=0x7f0a0029;
     }
     public static final class layout {
         public static final int a_doctors_doctoreditactivity=0x7f030000;

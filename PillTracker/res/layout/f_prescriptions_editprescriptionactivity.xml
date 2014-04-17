@@ -1,6 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<RelativeLayout 
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="wrap_content" >
 
     <TextView
         android:id="@+id/textView1"
@@ -128,10 +132,9 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="17dp"
         android:layout_marginTop="18dp"
+        android:layout_below="@+id/fepa_tp1"
         android:text="@string/prescriber" />
 
     <EditText
@@ -150,10 +153,9 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="17dp"
         android:layout_marginTop="18dp"
+        android:layout_below="@+id/textView5"
         android:text="@string/comments" />
 
     <EditText
@@ -169,3 +171,4 @@
     </EditText>
 
 </RelativeLayout>
+</ScrollView>

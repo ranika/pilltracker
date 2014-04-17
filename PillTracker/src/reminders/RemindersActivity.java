@@ -27,18 +27,6 @@ public class RemindersActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f_reminders_remindersactivity);
-		
-		mDb medFunctions = new mDb();
-		Calendar cal = Calendar.getInstance();
-		int day = cal.get(Calendar.DAY_OF_WEEK); // sun = 1; sat = 7
-		if (day == 1)
-			day = 7;
-		else
-			day -= 1;
-		String[] todaysMeds = medFunctions.daysMeds(this, day);
-		for (String s : todaysMeds) {
-			
-		}
 	}
 
 	@Override

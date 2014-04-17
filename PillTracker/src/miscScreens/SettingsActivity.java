@@ -7,12 +7,19 @@ import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class SettingsActivity extends Activity {
 
@@ -20,6 +27,42 @@ public class SettingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f_miscscreens_settingsactivity);
+		
+		CheckBox wirelessEn = (CheckBox) findViewById(R.id.sa_cb1);
+		CheckBox gpsEn = (CheckBox) findViewById(R.id.sa_cb2);
+		// check/uncheck boxes as appropriate
+		LocationManager manager = (LocationManager) getSystemService( this.LOCATION_SERVICE );
+		boolean isGpsOn = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
+		boolean isWifiOn = manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
+		gpsEn.setChecked(isGpsOn);
+		wirelessEn.setChecked(isWifiOn);
+		// set listeners
+		gpsEn.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
+			}
+		});
+		wirelessEn.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				startActivityForResult(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS), 0);
+			}
+		});
+	}
+	
+	@Override
+	public void onResume() {
+		CheckBox wirelessEn = (CheckBox) findViewById(R.id.sa_cb1);
+		CheckBox gpsEn = (CheckBox) findViewById(R.id.sa_cb2);
+		// check/uncheck boxes as appropriate
+		LocationManager manager = (LocationManager) getSystemService( this.LOCATION_SERVICE );
+		boolean isGpsOn = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
+		boolean isWifiOn = manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 	}
 
 	@Override

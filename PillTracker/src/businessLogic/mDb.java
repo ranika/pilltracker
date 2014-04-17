@@ -1,6 +1,7 @@
 package businessLogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -103,14 +104,22 @@ public class mDb implements MedicationFunctions {
 		ArrayList<String> result = new ArrayList<String>();
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		Integer[] allIds = idMap.values().toArray(new Integer[idMap.values().size()]);
+		StringBuffer sb = null;
 		for (Integer i : allIds) {
 			// [hour0, min0, day0, on0, hour1, min1, day1, on1, ...]
 			ArrayList<Integer> resultList = mDb.readReminder(i);
 			for (int j = 0; j < resultList.size(); j += 4) {
 				if (resultList.get(j+2) == day)
-					result.add(this.idToMedName(i));
+					sb = new StringBuffer();
+					sb.append(resultList.get(j));
+					sb.append(":");
+					sb.append(resultList.get(j+1));
+					sb.append(" | ");
+					sb.append(this.idToMedName(i));
+					result.add(sb.toString());
 			}
 		}
+		Collections.sort(result);
 		return result.toArray(new String[result.size()]);
 	}
 

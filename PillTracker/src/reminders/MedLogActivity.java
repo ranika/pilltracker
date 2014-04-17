@@ -1,5 +1,9 @@
 package reminders;
 
+import java.util.Calendar;
+
+import businessLogic.mDb;
+
 import com.example.pilltracker.R;
 import com.example.pilltracker.R.id;
 import com.example.pilltracker.R.layout;
@@ -13,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 
 public class MedLogActivity extends Activity {
 
@@ -20,6 +26,26 @@ public class MedLogActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f_reminders_medlogactivity);
+		
+		// get layout
+		RelativeLayout l = (RelativeLayout) findViewById(R.id.mla_l);
+		// add reminders for today
+		mDb medFunctions = new mDb();
+		Calendar cal = Calendar.getInstance();
+		int day = cal.get(Calendar.DAY_OF_WEEK); // sun = 1; sat = 7
+		if (day == 1)
+			day = 7;
+		else
+			day -= 1;
+		String[] todaysMeds = medFunctions.daysMeds(this, day);
+		// generate checkboxes
+		for (String s : todaysMeds) {
+			
+			CheckBox cb = new CheckBox(this);
+			cb.setText(s);
+			l.addView(cb);
+			
+		}
 
 	}
 

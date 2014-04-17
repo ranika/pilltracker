@@ -34,7 +34,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/sa_cb1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView2"
@@ -63,7 +63,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/sa_cb2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
