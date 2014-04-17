@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -12,11 +13,11 @@ import android.util.Log;
 
 public class medDatabase extends SQLiteOpenHelper {
 	
-	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "medications";
+	private static final int DATABASE_VERSION = 5;
+	private static final String DATABASE_NAME = "medications.db";
 	private static final String TABLE_R = "reminder";
 	private static final String TABLE_D = "details";
-	private static final String[] COLUMNS_R = {"id", "time_h", "time_m", "day", "on"};
+	private static final String[] COLUMNS_R = {"id", "time_h", "time_m", "day", "turntUp"};
 	private static final String[] COLUMNS_D = {"id", "name", "prescriber", "comments"};
 	
 	public medDatabase(Context context, String name, CursorFactory factory,
@@ -39,7 +40,7 @@ public class medDatabase extends SQLiteOpenHelper {
 		CREATE_TABLE_R.append(COLUMNS_R[2] + " int, ");
 		// day: 0-6
 		CREATE_TABLE_R.append(COLUMNS_R[3] + " int, ");
-		// boolean on: 0-1
+		// boolean turntUp: 0-1
 		CREATE_TABLE_R.append(COLUMNS_R[4] + " int");
 		CREATE_TABLE_R.append(" )");
 		db.execSQL(CREATE_TABLE_R.toString());
@@ -48,11 +49,11 @@ public class medDatabase extends SQLiteOpenHelper {
 		CREATE_TABLE_D.append("CREATE TABLE " + TABLE_D);
 		CREATE_TABLE_D.append(" ( id INTEGER PRIMARY KEY, ");
 		// name
-		CREATE_TABLE_D.append(COLUMNS_R[1] + " text, ");
+		CREATE_TABLE_D.append(COLUMNS_D[1] + " text, ");
 		// prescriber
-		CREATE_TABLE_D.append(COLUMNS_R[2] + " text, ");
+		CREATE_TABLE_D.append(COLUMNS_D[2] + " text, ");
 		// comments
-		CREATE_TABLE_D.append(COLUMNS_R[3] + " text");
+		CREATE_TABLE_D.append(COLUMNS_D[3] + " text");
 		CREATE_TABLE_D.append(" )");
 		db.execSQL(CREATE_TABLE_D.toString());
 	}
@@ -101,12 +102,12 @@ public class medDatabase extends SQLiteOpenHelper {
 		vals.put(COLUMNS_R[2], min);
 		vals.put(COLUMNS_R[3], day);
 		vals.put(COLUMNS_R[4], onint);
-		long error = db.insert(TABLE_R, null, vals);
+		long error = db.insertWithOnConflict(TABLE_R, null, vals, SQLiteDatabase.CONFLICT_REPLACE);
 		db.close();
 	}
 	
 	// returns in the following format
-	// [hour0, min0, day0, on0, hour1, min1, day1, on1, ...]
+	// [hour0, min0, dayAll, on0]]
 	// read in increments of 4
 	public ArrayList<Integer> readReminder(int med_id) {
 		Log.d("medDatebase", "readReminder");
@@ -115,13 +116,12 @@ public class medDatabase extends SQLiteOpenHelper {
 		Cursor query = db.query(TABLE_R, COLUMNS_R, "id = ?", idStr, null, null, null, null);
 		ArrayList<Integer> results = new ArrayList<Integer>();
 		if (query.moveToFirst()) {
-			do {
-				results.add(Integer.parseInt(query.getString(1)));
-				results.add(Integer.parseInt(query.getString(2)));
-				results.add(Integer.parseInt(query.getString(3)));
-				results.add(Integer.parseInt(query.getString(4)));
-			} while (query.moveToNext());
+			results.add(Integer.parseInt(query.getString(1)));
+			results.add(Integer.parseInt(query.getString(2)));
+			results.add(Integer.parseInt(query.getString(3)));
+			results.add(Integer.parseInt(query.getString(4)));
 		}
+		db.close(); 
 		return results;
 	}
 	
@@ -150,21 +150,27 @@ public class medDatabase extends SQLiteOpenHelper {
 		vals.put(COLUMNS_D[1], name);
 		vals.put(COLUMNS_D[2], prescriber);
 		vals.put(COLUMNS_D[3], comments);
-		long error = db.insert(TABLE_D, null, vals);
+		long error = db.insertWithOnConflict(TABLE_D,null,vals,SQLiteDatabase.CONFLICT_REPLACE);
 		db.close();
 	}
 	
 	// returns in the following format
 	// [name, prescriber, comments]
 	public String[] readDetails(int med_id) {
-		Log.d("medDatebase", "readDetails");
+		Log.d("medDatabase", "readDetails");
 		SQLiteDatabase db = this.getReadableDatabase();
 		String[] idStr = {String.valueOf(med_id)};
 		Cursor query = db.query(TABLE_D, COLUMNS_D, "id = ?", idStr, null, null, null, null);
 		String[] results = new String[3];
-		results[0] = query.getString(1);
-		results[1] = query.getString(2);
-		results[2] = query.getString(3);
+		if(query.moveToFirst())
+		{
+			results[0] = query.getString(1);
+			results[1] = query.getString(2);
+			results[2] = query.getString(3);
+		}
+		else
+			Log.d("medDatabase", "were fucked"); 
+		db.close(); 
 		return results;
 	}
 	

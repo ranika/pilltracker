@@ -35,7 +35,7 @@ public final class R {
         public static final int left_arrow=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a002e;
+        public static final int action_settings=0x7f0a0030;
         public static final int button1=0x7f0a000a;
         public static final int button2=0x7f0a000e;
         public static final int button3=0x7f0a000f;
@@ -49,29 +49,31 @@ public final class R {
         public static final int fdea_et2=0x7f0a0005;
         public static final int fdea_et3=0x7f0a0007;
         public static final int fdea_et4=0x7f0a0009;
-        public static final int fepa_cb0=0x7f0a001c;
-        public static final int fepa_cb1=0x7f0a001d;
-        public static final int fepa_cb2=0x7f0a001e;
-        public static final int fepa_cb3=0x7f0a001f;
-        public static final int fepa_cb4=0x7f0a0020;
-        public static final int fepa_cb5=0x7f0a0021;
-        public static final int fepa_cb6=0x7f0a0022;
-        public static final int fepa_et1=0x7f0a001a;
-        public static final int fepa_et2=0x7f0a0024;
-        public static final int fepa_et3=0x7f0a0025;
-        public static final int fepa_s1=0x7f0a001b;
-        public static final int fepa_tp1=0x7f0a0023;
-        public static final int fpa_lv=0x7f0a0026;
-        public static final int listitemheader=0x7f0a002c;
-        public static final int listitemsub=0x7f0a002d;
-        public static final int mla_l=0x7f0a0027;
+        public static final int fepa_button1=0x7f0a0027;
+        public static final int fepa_cb0=0x7f0a001d;
+        public static final int fepa_cb1=0x7f0a001e;
+        public static final int fepa_cb2=0x7f0a001f;
+        public static final int fepa_cb3=0x7f0a0020;
+        public static final int fepa_cb4=0x7f0a0021;
+        public static final int fepa_cb5=0x7f0a0022;
+        public static final int fepa_cb6=0x7f0a0023;
+        public static final int fepa_et1=0x7f0a001b;
+        public static final int fepa_et2=0x7f0a0025;
+        public static final int fepa_et3=0x7f0a0026;
+        public static final int fepa_relative=0x7f0a001a;
+        public static final int fepa_s1=0x7f0a001c;
+        public static final int fepa_tp1=0x7f0a0024;
+        public static final int fpa_lv=0x7f0a0028;
+        public static final int listitemheader=0x7f0a002e;
+        public static final int listitemsub=0x7f0a002f;
+        public static final int mla_l=0x7f0a0029;
         public static final int sa_cb1=0x7f0a0012;
         public static final int sa_cb2=0x7f0a0014;
         public static final int searchView1=0x7f0a000c;
         public static final int spinner1=0x7f0a0011;
-        public static final int switch1=0x7f0a0028;
-        public static final int switch2=0x7f0a0029;
-        public static final int switch3=0x7f0a002a;
+        public static final int switch1=0x7f0a002a;
+        public static final int switch2=0x7f0a002b;
+        public static final int switch3=0x7f0a002c;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
         public static final int textView3=0x7f0a0004;
@@ -79,7 +81,7 @@ public final class R {
         public static final int textView5=0x7f0a0008;
         public static final int textView6=0x7f0a0015;
         public static final int textView7=0x7f0a0016;
-        public static final int timePicker1=0x7f0a002b;
+        public static final int timePicker1=0x7f0a002d;
         public static final int view1=0x7f0a000b;
         public static final int view2=0x7f0a0013;
     }
@@ -154,6 +156,7 @@ public final class R {
         public static final int reminder=0x7f050018;
         public static final int reminders=0x7f050003;
         public static final int saturday=0x7f050026;
+        public static final int save=0x7f050039;
         public static final int send_alert=0x7f05002d;
         public static final int settings=0x7f050007;
         public static final int sunday=0x7f050027;

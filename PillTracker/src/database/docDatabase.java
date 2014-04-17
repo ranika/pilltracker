@@ -16,8 +16,8 @@ import android.util.Log;
 
 public class docDatabase extends SQLiteOpenHelper{
 	
-	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "doctors";
+	private static final int DATABASE_VERSION = 3;
+	private static final String DATABASE_NAME = "doctors.db";
 	private static final String TABLE = "doc_details";
 	private static final String[] COLUMNS = {"id", "name", "phone", "email", "address"};
 	
@@ -40,7 +40,7 @@ public class docDatabase extends SQLiteOpenHelper{
 		// phone
 		CREATE_TABLE.append(COLUMNS[2] + " text, ");
 		// email
-		CREATE_TABLE.append(COLUMNS[3] + " text");
+		CREATE_TABLE.append(COLUMNS[3] + " text, ");
 		// address
 		CREATE_TABLE.append(COLUMNS[4] + " text");
 		CREATE_TABLE.append(" )");
@@ -81,6 +81,7 @@ public class docDatabase extends SQLiteOpenHelper{
 		String e = query.getString(3);
 		String a = query.getString(4);
 		Doctor d = new DoctorImpl(id, n, p, e, a);
+		db.close(); 
 		return d;
 	}
 	
@@ -102,6 +103,7 @@ public class docDatabase extends SQLiteOpenHelper{
 				result.add(d);
 			} while (query.moveToNext());
 		}
+		db.close(); 
 		return result;
 	}
 	
@@ -129,6 +131,7 @@ public class docDatabase extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getWritableDatabase();
 		String[] nameArr = {name};
 		db.delete(TABLE, "name = ?", nameArr);
+		db.close();
 	}
 
 }

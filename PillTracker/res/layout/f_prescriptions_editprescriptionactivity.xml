@@ -3,6 +3,7 @@
     android:layout_height="match_parent" >
 
 <RelativeLayout 
+    android:id="@+id/fepa_relative"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
 
@@ -169,6 +170,15 @@
         android:hint="@string/blah"
         android:ems="10" >
     </EditText>
+    
+    <Button 
+        android:id="@+id/fepa_button1" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:text="@string/save"
+        android:onClick="goBack" />
 
 </RelativeLayout>
 </ScrollView>

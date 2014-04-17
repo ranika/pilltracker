@@ -57,12 +57,15 @@ public class SettingsActivity extends Activity {
 	
 	@Override
 	public void onResume() {
+		super.onResume(); 
 		CheckBox wirelessEn = (CheckBox) findViewById(R.id.sa_cb1);
 		CheckBox gpsEn = (CheckBox) findViewById(R.id.sa_cb2);
 		// check/uncheck boxes as appropriate
 		LocationManager manager = (LocationManager) getSystemService( this.LOCATION_SERVICE );
 		boolean isGpsOn = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
 		boolean isWifiOn = manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
+		gpsEn.setChecked(isGpsOn);
+		wirelessEn.setChecked(isWifiOn);
 	}
 
 	@Override

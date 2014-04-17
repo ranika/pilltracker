@@ -1,5 +1,7 @@
 package prescriptions;
 
+import businessLogic.mDb;
+
 import com.example.pilltracker.R;
 import com.example.pilltracker.R.id;
 import com.example.pilltracker.R.layout;
@@ -7,12 +9,14 @@ import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 public class EditPrescriptionActivity extends Activity {
 
@@ -58,6 +62,15 @@ public class EditPrescriptionActivity extends Activity {
 					R.layout.f_prescriptions_editprescriptionactivity, container, false);
 			return rootView;
 		}
+	}
+	
+	public void goBack(View view)
+	{
+		mDb m = new mDb();
+		RelativeLayout r = (RelativeLayout) findViewById(R.id.fepa_relative); 
+		m.userInputToDatabase(r, this);
+		Intent intent = new Intent(this, PrescriptionActivity.class); 
+		startActivity(intent);
 	}
 
 }

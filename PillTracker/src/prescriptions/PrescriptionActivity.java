@@ -147,5 +147,11 @@ public class PrescriptionActivity extends Activity {
 			}
 			
 		}
+		
+		public void startEdit(View view)
+		{
+			Intent intent = new Intent(this, EditPrescriptionActivity.class); 
+			startActivity(intent); 
+		}
 
 }

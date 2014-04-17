@@ -28,25 +28,26 @@ public class mDb implements MedicationFunctions {
 		int id = mDb.idGenerator++;
 		// find text information
 		String name = ((EditText)v.findViewById(R.id.fepa_et1)).getText().toString();
-		String prescriber = ((EditText)v.findViewById(R.id.fdea_et2)).getText().toString();
-		String comments = ((EditText)v.findViewById(R.id.fdea_et3)).getText().toString();
+		String prescriber = ((EditText)v.findViewById(R.id.fepa_et2)).getText().toString();
+		String comments = ((EditText)v.findViewById(R.id.fepa_et3)).getText().toString();
 		boolean on = ((Switch)v.findViewById(R.id.fepa_s1)).isChecked();
-		ArrayList<Integer> days = new ArrayList<Integer>();
+		//ArrayList<Integer> days = new ArrayList<Integer>();
+		StringBuffer days = new StringBuffer(); 
 		// check days
 		if (((CheckBox)v.findViewById(R.id.fepa_cb0)).isChecked())
-			days.add(0);
+			days.append(0);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb1)).isChecked())
-			days.add(1);
+			days.append(1);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb2)).isChecked())
-			days.add(2);
+			days.append(2);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb3)).isChecked())
-			days.add(3);
+			days.append(3);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb4)).isChecked())
-			days.add(4);
+			days.append(4);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb5)).isChecked())
-			days.add(5);
+			days.append(5);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb6)).isChecked())
-			days.add(6);
+			days.append(6);
 		TimePicker t = ((TimePicker)v.findViewById(R.id.fepa_tp1)); 
 		int time_h = t.getCurrentHour();
 		int time_m = t.getCurrentMinute();
@@ -54,8 +55,7 @@ public class mDb implements MedicationFunctions {
 		// add to database
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		mDb.createDetails(id, name, prescriber, comments);
-		for (Integer d : days)
-			mDb.createReminder(id, time_h, time_m, d, on);
+		mDb.createReminder(id, time_h, time_m, Integer.parseInt(days.toString()), on);
 	}
 
 	@Override

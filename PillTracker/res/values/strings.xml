@@ -69,5 +69,6 @@
     <string name="location">My Location</string>
     <string name="wireless">Use wireless networks</string>
     <string name="gps">Use GPS satellites</string>
+    <string name="save">Save</string>
 
 </resources>
