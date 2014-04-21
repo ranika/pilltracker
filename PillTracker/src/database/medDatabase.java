@@ -107,8 +107,7 @@ public class medDatabase extends SQLiteOpenHelper {
 	}
 	
 	// returns in the following format
-	// [hour0, min0, dayAll, on0]]
-	// read in increments of 4
+	// [hour0, min0, dayAll, on0]
 	public ArrayList<Integer> readReminder(int med_id) {
 		Log.d("medDatebase", "readReminder");
 		SQLiteDatabase db = this.getReadableDatabase();

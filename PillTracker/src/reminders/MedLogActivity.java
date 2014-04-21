@@ -11,16 +11,21 @@ import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-public class MedLogActivity extends Activity {
+public class MedLogActivity extends Activity implements OnCheckedChangeListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +43,37 @@ public class MedLogActivity extends Activity {
 		else
 			day -= 1;
 		String[] todaysMeds = medFunctions.daysMeds(this, day);
+		Log.d("MedLogOnCreate", day + " " + todaysMeds.length);
 		// generate checkboxes
 		for (String s : todaysMeds) {
-			
 			CheckBox cb = new CheckBox(this);
 			cb.setText(s);
 			l.addView(cb);
-			
 		}
 
+	}
+	
+	public void onResume() {
+		super.onResume();
+		// get layout
+		LinearLayout l = (LinearLayout) findViewById(R.id.mla_l);
+		// add reminders for today
+		mDb medFunctions = new mDb();
+		Calendar cal = Calendar.getInstance();
+		int day = cal.get(Calendar.DAY_OF_WEEK); // sun = 1; sat = 7
+		if (day == 1)
+			day = 6;
+		else
+			day -= 2;
+		String[] todaysMeds = medFunctions.daysMeds(this, day);
+		Log.d("MedLogOnCreate", day + " " + todaysMeds.length);
+		// generate checkboxes
+		for (String s : todaysMeds) {
+			CheckBox cb = new CheckBox(this);
+			cb.setText(s);
+			cb.setOnCheckedChangeListener(this);
+			l.addView(cb);
+		}
 	}
 
 	@Override
@@ -84,6 +111,14 @@ public class MedLogActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		if (isChecked)
+			buttonView.setPaintFlags(buttonView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+		else
+			buttonView.setPaintFlags(buttonView.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
 	}
 
 }

@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/mla_l" >
+    android:id="@+id/mla_l"
+    android:orientation="vertical" >
 
     <!-- TO DO: left, right buttons later
     <Button
@@ -24,16 +25,20 @@
     for textview1 below:
     	android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
+        
+        android:layout_centerHorizontal="true"
     -->
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/today"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
 
+    <!-- dynamically generate checkboxes in code
     <View
         android:id="@+id/view1"
         android:layout_width="fill_parent"
@@ -42,8 +47,7 @@
         android:layout_below="@+id/textView1"
         android:background="@color/black"
         android:paddingTop="20dp" />
-
-    <!-- dynamically generate checkboxes in code
+    
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -116,4 +120,4 @@
         android:paddingTop="20dp" />
     -->
 
-</RelativeLayout>
+</LinearLayout>

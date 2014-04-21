@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/fepa_cb3"
         android:layout_below="@+id/fepa_cb3"
-        android:text="@string/saturday" />
+        android:text="@string/friday" />
 
     <CheckBox
         android:id="@+id/fepa_cb5"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/fepa_cb4"
         android:layout_below="@+id/fepa_cb4"
-        android:text="@string/friday" />
+        android:text="@string/saturday" />
 
     <CheckBox
         android:id="@+id/fepa_cb6"

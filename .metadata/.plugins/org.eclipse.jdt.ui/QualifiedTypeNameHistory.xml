@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="entities.Doctor"/>
 <fullyQualifiedTypeName name="android.R"/>
 <fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="businessLogic.dDb"/>
 <fullyQualifiedTypeName name="android.widget.ListView"/>
 <fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
 <fullyQualifiedTypeName name="android.widget.AdapterView"/>
@@ -36,7 +35,15 @@
 <fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
 <fullyQualifiedTypeName name="android.provider.Settings"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="businessLogic.mDb"/>
 <fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
 <fullyQualifiedTypeName name="android.database.DatabaseUtils"/>
+=======
+<fullyQualifiedTypeName name="businessLogic.dDb"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.graphics.Paint"/>
+<fullyQualifiedTypeName name="android.provider.SyncStateContract.Constants"/>
+<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
+>>>>>>> 26b011d48c7b49d3afa42e81596df796a0902a16
 </qualifiedTypeNameHistroy>

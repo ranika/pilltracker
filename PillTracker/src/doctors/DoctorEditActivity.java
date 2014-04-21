@@ -1,5 +1,9 @@
 package doctors;
 
+import prescriptions.PrescriptionActivity;
+import businessLogic.dDb;
+import businessLogic.mDb;
+
 import com.example.pilltracker.R;
 import com.example.pilltracker.R.id;
 import com.example.pilltracker.R.layout;
@@ -7,12 +11,14 @@ import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 public class DoctorEditActivity extends Activity {
 
@@ -40,6 +46,15 @@ public class DoctorEditActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void goBack(View view)
+	{
+		dDb d = new dDb();
+		RelativeLayout r = (RelativeLayout) findViewById(R.id.fdea_layout); 
+		d.userInputToDatabase(r, this);
+		Intent intent = new Intent(this, DoctorsActivity.class); 
+		startActivity(intent);
 	}
 
 	/**
