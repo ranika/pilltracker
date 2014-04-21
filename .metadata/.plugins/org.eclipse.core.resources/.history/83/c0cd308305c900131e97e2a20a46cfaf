@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/fdea_layout" >
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/fdea_et1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:hint="@string/eye_doctor"
+        android:ems="10" >
+    </EditText>
+    <!-- for future implementation 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/fdea_et1"
+        android:layout_marginTop="20dp"
+        android:text="@string/send_alert" />
+
+    <Switch
+        android:id="@+id/fdea_s1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/fdea_et1" />
+
+    <RadioButton
+        android:id="@+id/fdea_cb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/fdea_s1"
+        android:layout_marginTop="20dp"
+        android:text="@string/pill" />
+
+    <RadioButton
+        android:id="@+id/fdea_cb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fdea_cb1"
+        android:layout_below="@+id/fdea_cb1"
+        android:text="@string/vitamin" />
+
+    <RadioButton
+        android:id="@+id/fdea_cb3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fdea_cb2"
+        android:layout_below="@+id/fdea_cb2"
+        android:text="@string/nasal" />
+        
+    -->
+
+	<!-- android:layout_alignLeft="@+id/fdea_cb3"
+	android:layout_centerVertical="true" -->
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/textView1"
+        android:text="@string/phone" />
+    
+    <EditText
+        android:id="@+id/fdea_et2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/textView3"
+        android:hint="@string/number"
+        android:ems="10" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="23dp"
+        android:text="@string/email" />
+    
+    <EditText
+        android:id="@+id/fdea_et3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:hint="@string/email_address"
+        android:ems="10" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/fdea_et3"
+        android:layout_marginTop="34dp"
+        android:text="@string/address" />
+    
+    <EditText
+        android:id="@+id/fdea_et4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/textView5"
+        android:hint="@string/addy"
+        android:ems="10" >
+    </EditText>
+    
+    <Button 
+        android:id="@+id/fdea_button1" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:text="@string/save"
+        android:onClick="goBack" />
+
+</RelativeLayout>

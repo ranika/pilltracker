@@ -67,7 +67,7 @@ public class docDatabase extends SQLiteOpenHelper{
 		vals.put(COLUMNS[2], phone);
 		vals.put(COLUMNS[3], email);
 		vals.put(COLUMNS[4], address);
-		long error = db.insert(TABLE, null, vals);
+		long error = db.insertWithOnConflict(TABLE, null, vals, SQLiteDatabase.CONFLICT_REPLACE);
 		db.close();
 	}
 	
@@ -76,11 +76,14 @@ public class docDatabase extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getReadableDatabase();
 		String[] idStr = {String.valueOf(id)};
 		Cursor query = db.query(TABLE, COLUMNS, "id = ?", idStr, null, null, null, null);
-		String n = query.getString(1);
-		String p = query.getString(2);
-		String e = query.getString(3);
-		String a = query.getString(4);
-		Doctor d = new DoctorImpl(id, n, p, e, a);
+		Doctor d = null;
+		if (query.moveToFirst()) {
+			String n = query.getString(1);
+			String p = query.getString(2);
+			String e = query.getString(3);
+			String a = query.getString(4);
+			d = new DoctorImpl(id, n, p, e, a);
+		}
 		db.close(); 
 		return d;
 	}

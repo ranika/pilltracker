@@ -126,7 +126,7 @@ public class DoctorsActivity extends Activity {
 		    TextView mainText = (TextView) rowView.findViewById(R.id.listitemheader);
 		    TextView subText = (TextView) rowView.findViewById(R.id.listitemsub);
 		    String completeStr = ((Doctor) getItem(position)).toString();
-		    String[] splitStr = completeStr.split("|");
+		    String[] splitStr = completeStr.split("\\|");
 		    String mainTextContent = splitStr[0];
 		    String subTextContent = splitStr[1];
 		    mainText.setText(mainTextContent);

@@ -106,17 +106,16 @@ public class mDb implements MedicationFunctions {
 		Integer[] allIds = idMap.values().toArray(new Integer[idMap.values().size()]);
 		StringBuffer sb = null;
 		for (Integer i : allIds) {
-			// [hour0, min0, day0, on0, hour1, min1, day1, on1, ...]
+			// [hour0, min0, day0, on0]
 			ArrayList<Integer> resultList = mDb.readReminder(i);
-			for (int j = 0; j < resultList.size(); j += 4) {
-				if (resultList.get(j+2) == day)
-					sb = new StringBuffer();
-					sb.append(resultList.get(j));
-					sb.append(":");
-					sb.append(resultList.get(j+1));
-					sb.append(" | ");
-					sb.append(this.idToMedName(i));
-					result.add(sb.toString());
+			if (resultList.get(2) == day) {
+				sb = new StringBuffer();
+				sb.append(resultList.get(0));
+				sb.append(":");
+				sb.append(resultList.get(1));
+				sb.append(" | ");
+				sb.append(this.idToMedName(i));
+				result.add(sb.toString());
 			}
 		}
 		Collections.sort(result);

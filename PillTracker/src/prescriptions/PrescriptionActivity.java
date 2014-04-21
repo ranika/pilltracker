@@ -17,6 +17,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -103,7 +104,7 @@ public class PrescriptionActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	// private class for managing listView
+		// private class for managing listView
 		private class MedArrayAdapter<MedicationImpl> extends ArrayAdapter<MedicationImpl> {
 
 			HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
@@ -121,37 +122,40 @@ public class PrescriptionActivity extends Activity {
 			
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
-			    LayoutInflater inflater = (LayoutInflater) thisC.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			    View rowView = inflater.inflate(R.layout.listitem, parent, false);
-			    TextView mainText = (TextView) rowView.findViewById(R.id.listitemheader);
-			    TextView subText = (TextView) rowView.findViewById(R.id.listitemsub);
-			    String completeStr = ((Medication) getItem(position)).toString();
-			    String[] splitStr = completeStr.split("|");
-			    String mainTextContent = splitStr[0];
-			    String subTextContent = splitStr[1];
-			    mainText.setText(mainTextContent);
-			    subText.setText(subTextContent);
-			    return rowView;
-			  }
-			
-			@Override
-			public long getItemId(int position) {
-				String item = ((Doctor) getItem(position)).toString();
-				return mIdMap.get(item);
-			}
-			
-			// IDs not guaranteed to stay consistent
-			@Override
-			public boolean hasStableIds() {
-				return false;
-			}
-			
+			LayoutInflater inflater = (LayoutInflater) thisC.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View rowView = inflater.inflate(R.layout.listitem, parent, false);
+			TextView mainText = (TextView) rowView.findViewById(R.id.listitemheader);
+			TextView subText = (TextView) rowView.findViewById(R.id.listitemsub);
+			String completeStr = ((Medication) getItem(position)).toString();
+			String[] splitStr = completeStr.split("\\|");
+			String mainTextContent = splitStr[0];
+			String subTextContent = splitStr[1];
+			mainText.setText(mainTextContent);
+			subText.setText(subTextContent);
+			Log.d("prescriptionOriginal", completeStr);
+			Log.d("prescriptionSplit", splitStr.length + splitStr[0] + splitStr[1]);
+		    Log.d("prescriptionAdapter", mainTextContent + "|" + subTextContent);
+		    return rowView;
 		}
 		
-		public void startEdit(View view)
-		{
-			Intent intent = new Intent(this, EditPrescriptionActivity.class); 
-			startActivity(intent); 
+		@Override
+		public long getItemId(int position) {
+			String item = ((Doctor) getItem(position)).toString();
+			return mIdMap.get(item);
 		}
+		
+		// IDs not guaranteed to stay consistent
+		@Override
+		public boolean hasStableIds() {
+			return false;
+		}
+		
+	}
+	
+	public void startEdit(View view)
+	{
+		Intent intent = new Intent(this, EditPrescriptionActivity.class); 
+		startActivity(intent); 
+	}
 
 }
