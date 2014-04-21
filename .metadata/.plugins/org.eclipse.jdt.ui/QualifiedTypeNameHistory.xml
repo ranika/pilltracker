@@ -27,10 +27,8 @@
 <fullyQualifiedTypeName name="com.example.pilltracker.R.layout"/>
 <fullyQualifiedTypeName name="database.medDatabase"/>
 <fullyQualifiedTypeName name="businessLogic.MedicationFunctions"/>
-<fullyQualifiedTypeName name="businessLogic.mDb"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
-<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
 <fullyQualifiedTypeName name="com.example.pilltracker.R.id"/>
 <fullyQualifiedTypeName name="android.widget.CheckBox"/>
 <fullyQualifiedTypeName name="android.content.ContentResolver"/>
@@ -38,4 +36,7 @@
 <fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
 <fullyQualifiedTypeName name="android.provider.Settings"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="businessLogic.mDb"/>
+<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
+<fullyQualifiedTypeName name="android.database.DatabaseUtils"/>
 </qualifiedTypeNameHistroy>
