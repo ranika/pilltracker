@@ -11,6 +11,8 @@ import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +35,7 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 		setContentView(R.layout.f_reminders_medlogactivity);
 		
 		// get layout
-		RelativeLayout l = (RelativeLayout) findViewById(R.id.mla_l);
+		LinearLayout l = (LinearLayout) findViewById(R.id.mla_l);
 		// add reminders for today
 		mDb medFunctions = new mDb();
 		Calendar cal = Calendar.getInstance();
@@ -57,6 +59,8 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 		super.onResume();
 		// get layout
 		LinearLayout l = (LinearLayout) findViewById(R.id.mla_l);
+		// get saved preferences
+		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 		// add reminders for today
 		mDb medFunctions = new mDb();
 		Calendar cal = Calendar.getInstance();
@@ -72,6 +76,7 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 			CheckBox cb = new CheckBox(this);
 			cb.setText(s);
 			cb.setOnCheckedChangeListener(this);
+			cb.setChecked(sharedPreferences.getBoolean(s, false));
 			l.addView(cb);
 		}
 	}
@@ -115,8 +120,14 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		if (isChecked)
+		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE); 
+		SharedPreferences.Editor editor = sharedPreferences.edit(); 
+		editor.putBoolean(buttonView.getText().toString(), isChecked); 
+		editor.commit();  
+		Log.d("saving checkbox", buttonView.getText().toString() + " " + isChecked);
+		if (isChecked) {
 			buttonView.setPaintFlags(buttonView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+		}
 		else
 			buttonView.setPaintFlags(buttonView.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
 	}

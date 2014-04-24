@@ -152,5 +152,10 @@ public class mDb implements MedicationFunctions {
 		mDb.deleteDetails(id);
 	}
 
+	public void clear(Context c) {
+		medDatabase mDb = new medDatabase(c, null, null, 0);
+		mDb.clear();
+	}
+
 
 }

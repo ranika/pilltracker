@@ -37,6 +37,11 @@ public class dDb implements doctorFunctions{
 		docDatabase db = new docDatabase(c, null, null, 0);
 		db.removeName(name);
 	}
+
+	public void clear(Context c) {
+		docDatabase db = new docDatabase(c, null, null, 0);
+		db.clear();
+	}
 	
 	
 

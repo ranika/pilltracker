@@ -1,5 +1,7 @@
 package com.example.pilltracker;
 
+import businessLogic.dDb;
+import businessLogic.mDb;
 import miscScreens.NotesActivity;
 import miscScreens.PharmaciesActivity;
 import miscScreens.SettingsActivity;
@@ -29,6 +31,12 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        
+        // only for testing, remove before actual demo
+        //mDb medFunctions = new mDb();
+        //dDb docFunctions = new dDb();
+        //medFunctions.clear(this);
+        //docFunctions.clear(this);
     }
 
 

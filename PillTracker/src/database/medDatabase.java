@@ -192,4 +192,10 @@ public class medDatabase extends SQLiteOpenHelper {
         db.close();
 	}
 
+	public void clear() {
+		SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_D, null, null); 
+        db.delete(TABLE_R, null, null); 
+	}
+
 }

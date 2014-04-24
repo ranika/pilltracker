@@ -137,4 +137,9 @@ public class docDatabase extends SQLiteOpenHelper{
 		db.close();
 	}
 
+	public void clear() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE, null, null);
+	}
+
 }
