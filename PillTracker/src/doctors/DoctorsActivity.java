@@ -7,14 +7,11 @@ import java.util.List;
 import businessLogic.dDb;
 
 import com.example.pilltracker.R;
-import com.example.pilltracker.R.id;
-import com.example.pilltracker.R.layout;
-import com.example.pilltracker.R.menu;
 
 import entities.Doctor;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +40,7 @@ public class DoctorsActivity extends Activity {
 		final ListView fda_lv = (ListView) findViewById(R.id.fda_lv);
 		fda_lv.setAdapter(daa);
 		// long click to delete doctor information
+		/* TODO Implement
 		fda_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, final View view,
 					int position, long id) {
@@ -57,7 +54,7 @@ public class DoctorsActivity extends Activity {
 				});
 				return true;
 			}
-		});
+		}); */
 	}
 
 	@Override

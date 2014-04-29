@@ -1,32 +1,53 @@
 package reminders;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import businessLogic.MedicationFunctions;
 import businessLogic.mDb;
 
 import com.example.pilltracker.R;
-import com.example.pilltracker.R.id;
-import com.example.pilltracker.R.layout;
-import com.example.pilltracker.R.menu;
 
-import database.medDatabase;
+import entities.Medication;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ListView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TimePicker;
+import android.support.v4.app.Fragment;
 
 public class RemindersActivity extends Activity {
+	
+	private final Context thisC = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f_reminders_remindersactivity);
+	}
+	
+	protected void onResume() {
+		super.onResume();
+		// add listView
+		mDb medDatabase = new mDb();
+		ArrayList<Medication> list = medDatabase.readFromDatabase(this);
+		RemArrayAdapter<Medication> raa = new RemArrayAdapter<Medication>(this, R.layout.remitem, list);
+		ListView rem_lv = (ListView) findViewById(R.id.rem_lv);
+		rem_lv.setAdapter(raa);
 	}
 
 	@Override
@@ -65,5 +86,101 @@ public class RemindersActivity extends Activity {
 			return rootView;
 		}
 	}
+	
+	// private class for managing listView
+	private class RemArrayAdapter<MedicationImpl> extends ArrayAdapter<MedicationImpl> {
+
+		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+		
+		public RemArrayAdapter(Context context, int resource,
+				List<MedicationImpl> objects) {
+			super(context, resource, objects);
+			Medication m = null;
+			// add medication names to list view adapter
+			for (int i = 0; i < objects.size(); i++) {
+				m = (Medication) objects.get(i);
+				mIdMap.put(m.getName(), i);
+			}
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = (LayoutInflater) thisC.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View rowView = inflater.inflate(R.layout.remitem, parent, false);
+			CheckBox mainCb = (CheckBox) rowView.findViewById(R.id.cb);
+			String completeStr = ((Medication) getItem(position)).getName();
+			mDb medDatabase = new mDb();
+			int id = medDatabase.medNameToId(completeStr);
+			ArrayList<String> times = medDatabase.getTimes(thisC, id);
+			// hour, min, days, on
+			boolean isChecked = (Integer.parseInt(times.get(3)) != 0);
+			mainCb.setText(completeStr);
+			mainCb.setChecked(isChecked);
+			if (!isChecked) {
+				mainCb.setPaintFlags(mainCb.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			}
+			mainCb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				
+				int hour;
+				int min;
+				int id;
+				boolean checked;
+				ArrayList<String> times;
+				
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					String completeStr = buttonView.getText().toString();
+					Log.d("rem checkbox changed", completeStr + " " + isChecked);
+					mDb medDatabase = new mDb();
+					id = medDatabase.medNameToId(completeStr);
+					times = medDatabase.getTimes(thisC, id);
+					hour = Integer.parseInt(times.get(0));
+					min = Integer.parseInt(times.get(1));
+					checked = isChecked;
+					// off > on
+					if (isChecked) {
+						buttonView.setPaintFlags(buttonView.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+						// pop up new time window
+						Dialog d= new TimePickerDialog(thisC, timeSetListener, hour, min, true);
+						d.show();
+					}
+					// on > off
+					else {
+						buttonView.setPaintFlags(buttonView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+					}
+				}
+				
+				private TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
+
+					@Override
+					public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+						hour = hourOfDay;
+						min = minute;
+						// store in database
+						Log.d("remListenerStoring", times.get(2) + " " + checked);
+						mDb medDatabase = new mDb();
+						medDatabase.setTimes(thisC, id, hour, min, times.get(2), checked);
+					}
+
+				};
+			});
+			Log.d("reminderText", completeStr + " " + isChecked);
+		    return rowView;
+		}
+		
+		
+		
+		@Override
+		public long getItemId(int position) {
+			String item = ((Medication) getItem(position)).getName();
+			return mIdMap.get(item);
+		}
+			
+		// IDs not guaranteed to stay consistent
+		@Override
+		public boolean hasStableIds() {
+			return false;
+		}
+			
+	} // private class ends
 
 }

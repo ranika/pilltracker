@@ -8,12 +8,11 @@ import businessLogic.mDb;
 
 import com.example.pilltracker.R;
 
-import entities.Doctor;
 import entities.Medication;
 import entities.MedicationImpl;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +42,7 @@ public class PrescriptionActivity extends Activity {
 		final ListView fpa_lv = (ListView) findViewById(R.id.fpa_lv);
 		fpa_lv.setAdapter(maa);
 		// long click to delete doctor information
+		/* TODO Implement
 		fpa_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, final View view,
 					int position, long id) {
@@ -58,7 +57,7 @@ public class PrescriptionActivity extends Activity {
 				});
 				return true;
 			}
-		});		
+		});	*/	
 	}
 
 	@Override
@@ -140,7 +139,7 @@ public class PrescriptionActivity extends Activity {
 		
 		@Override
 		public long getItemId(int position) {
-			String item = ((Doctor) getItem(position)).toString();
+			String item = ((Medication) getItem(position)).toString();
 			return mIdMap.get(item);
 		}
 		

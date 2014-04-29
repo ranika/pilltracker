@@ -1,7 +1,5 @@
 package com.example.pilltracker;
 
-import businessLogic.dDb;
-import businessLogic.mDb;
 import miscScreens.NotesActivity;
 import miscScreens.PharmaciesActivity;
 import miscScreens.SettingsActivity;
@@ -10,7 +8,8 @@ import reminders.MedLogActivity;
 import reminders.RemindersActivity;
 import doctors.DoctorsActivity;
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.a_pilltracker_mainactivity);
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }

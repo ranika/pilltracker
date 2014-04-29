@@ -3,12 +3,8 @@ package prescriptions;
 import businessLogic.mDb;
 
 import com.example.pilltracker.R;
-import com.example.pilltracker.R.id;
-import com.example.pilltracker.R.layout;
-import com.example.pilltracker.R.menu;
-
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;

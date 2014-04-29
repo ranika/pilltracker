@@ -1,17 +1,13 @@
 package miscScreens;
 
 import com.example.pilltracker.R;
-import com.example.pilltracker.R.id;
-import com.example.pilltracker.R.layout;
-import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.ContentResolver;
+import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +27,7 @@ public class SettingsActivity extends Activity {
 		CheckBox wirelessEn = (CheckBox) findViewById(R.id.sa_cb1);
 		CheckBox gpsEn = (CheckBox) findViewById(R.id.sa_cb2);
 		// check/uncheck boxes as appropriate
-		LocationManager manager = (LocationManager) getSystemService( this.LOCATION_SERVICE );
+		LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 		boolean isGpsOn = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
 		boolean isWifiOn = manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 		gpsEn.setChecked(isGpsOn);
@@ -61,7 +57,7 @@ public class SettingsActivity extends Activity {
 		CheckBox wirelessEn = (CheckBox) findViewById(R.id.sa_cb1);
 		CheckBox gpsEn = (CheckBox) findViewById(R.id.sa_cb2);
 		// check/uncheck boxes as appropriate
-		LocationManager manager = (LocationManager) getSystemService( this.LOCATION_SERVICE );
+		LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 		boolean isGpsOn = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
 		boolean isWifiOn = manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 		gpsEn.setChecked(isGpsOn);

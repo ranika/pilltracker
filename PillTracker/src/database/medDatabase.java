@@ -13,7 +13,7 @@ import android.util.Log;
 
 public class medDatabase extends SQLiteOpenHelper {
 	
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 6;
 	private static final String DATABASE_NAME = "medications.db";
 	private static final String TABLE_R = "reminder";
 	private static final String TABLE_D = "details";
@@ -39,7 +39,7 @@ public class medDatabase extends SQLiteOpenHelper {
 		// minutes: 0-59
 		CREATE_TABLE_R.append(COLUMNS_R[2] + " int, ");
 		// day: 0-6
-		CREATE_TABLE_R.append(COLUMNS_R[3] + " int, ");
+		CREATE_TABLE_R.append(COLUMNS_R[3] + " text, ");
 		// boolean turntUp: 0-1
 		CREATE_TABLE_R.append(COLUMNS_R[4] + " int");
 		CREATE_TABLE_R.append(" )");
@@ -71,7 +71,7 @@ public class medDatabase extends SQLiteOpenHelper {
 	// CRUD operations for reminders database follow
 	
 	// helper function used to check only valid values are input
-	private boolean errorCheck(int hour, int min, int day) {
+	private boolean errorCheck(int hour, int min) {
 		if ( (hour < 0) || (hour > 23) ) {
 			System.out.println("medDatabase createReminder error : invalid input");
 			return false;
@@ -80,17 +80,13 @@ public class medDatabase extends SQLiteOpenHelper {
 			System.out.println("medDatabase createReminder error : invalid input");
 			return false;
 		}
-		if ( (day < 0) || (day > 6) ) {
-			System.out.println("medDatabase createReminder error : invalid input");
-			return false;
-		}
 		return true;
 	}
 	
-	public void createReminder(int med_id, int hour, int min, int day, boolean on) {
-		Log.d("medDatabase", "createReminder");
+	public void createReminder(int med_id, int hour, int min, String day, boolean on) {
+		Log.d("medDatabase", "createReminder" + " " + day);
 		// error checking
-		if (errorCheck(hour, min, day) == false)
+		if (errorCheck(hour, min) == false)
 			return;
 		// enter into database
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -108,17 +104,17 @@ public class medDatabase extends SQLiteOpenHelper {
 	
 	// returns in the following format
 	// [hour0, min0, dayAll, on0]
-	public ArrayList<Integer> readReminder(int med_id) {
+	public ArrayList<String> readReminder(int med_id) {
 		Log.d("medDatebase", "readReminder");
 		SQLiteDatabase db = this.getReadableDatabase();
 		String[] idStr = {String.valueOf(med_id)};
 		Cursor query = db.query(TABLE_R, COLUMNS_R, "id = ?", idStr, null, null, null, null);
-		ArrayList<Integer> results = new ArrayList<Integer>();
+		ArrayList<String> results = new ArrayList<String>();
 		if (query.moveToFirst()) {
-			results.add(Integer.parseInt(query.getString(1)));
-			results.add(Integer.parseInt(query.getString(2)));
-			results.add(Integer.parseInt(query.getString(3)));
-			results.add(Integer.parseInt(query.getString(4)));
+			results.add((query.getString(1)));
+			results.add((query.getString(2)));
+			results.add((query.getString(3)));
+			results.add((query.getString(4)));
 		}
 		db.close(); 
 		return results;
@@ -168,7 +164,7 @@ public class medDatabase extends SQLiteOpenHelper {
 			results[2] = query.getString(3);
 		}
 		else
-			Log.d("medDatabase", "were fucked"); 
+			Log.d("medDatabase", "we are fucked"); 
 		db.close(); 
 		return results;
 	}

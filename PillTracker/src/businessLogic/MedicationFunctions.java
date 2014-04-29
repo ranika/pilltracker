@@ -1,5 +1,7 @@
 package businessLogic;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 
 public interface MedicationFunctions extends DatabaseFunctions{
@@ -23,5 +25,5 @@ public interface MedicationFunctions extends DatabaseFunctions{
 	// gets all reminders
 	// returns in the following format
 	// [hour0, min0, day0, on0, hour1, min1, day1, on1, ...]
-	public int[] getTimes(Context c, int id);
+	public ArrayList<String> getTimes(Context c, int id);
 }

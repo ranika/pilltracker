@@ -33,9 +33,10 @@ public final class R {
         public static final int arrow_right=0x7f020002;
         public static final int ic_launcher=0x7f020003;
         public static final int left_arrow=0x7f020004;
+        public static final int pilltrackericon=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0031;
+        public static final int action_settings=0x7f0a002f;
         public static final int button1=0x7f0a000b;
         public static final int button2=0x7f0a000f;
         public static final int button3=0x7f0a0010;
@@ -43,6 +44,7 @@ public final class R {
         public static final int button5=0x7f0a0018;
         public static final int button6=0x7f0a0019;
         public static final int button7=0x7f0a001a;
+        public static final int cb=0x7f0a002e;
         public static final int container=0x7f0a0000;
         public static final int fda_lv=0x7f0a000d;
         public static final int fdea_button1=0x7f0a000a;
@@ -66,15 +68,13 @@ public final class R {
         public static final int fepa_s1=0x7f0a001d;
         public static final int fepa_tp1=0x7f0a0025;
         public static final int fpa_lv=0x7f0a0029;
-        public static final int listitemheader=0x7f0a002f;
-        public static final int listitemsub=0x7f0a0030;
+        public static final int listitemheader=0x7f0a002c;
+        public static final int listitemsub=0x7f0a002d;
         public static final int mla_l=0x7f0a002a;
+        public static final int rem_lv=0x7f0a002b;
         public static final int sa_cb1=0x7f0a0013;
         public static final int sa_cb2=0x7f0a0015;
         public static final int spinner1=0x7f0a0012;
-        public static final int switch1=0x7f0a002b;
-        public static final int switch2=0x7f0a002c;
-        public static final int switch3=0x7f0a002d;
         public static final int textView1=0x7f0a0002;
         public static final int textView2=0x7f0a000e;
         public static final int textView3=0x7f0a0004;
@@ -82,7 +82,6 @@ public final class R {
         public static final int textView5=0x7f0a0008;
         public static final int textView6=0x7f0a0016;
         public static final int textView7=0x7f0a0017;
-        public static final int timePicker1=0x7f0a002e;
         public static final int view1=0x7f0a000c;
         public static final int view2=0x7f0a0014;
     }
@@ -108,6 +107,7 @@ public final class R {
         public static final int f_reminders_medlogactivity=0x7f030012;
         public static final int f_reminders_remindersactivity=0x7f030013;
         public static final int listitem=0x7f030014;
+        public static final int remitem=0x7f030015;
     }
     public static final class menu {
         public static final int doctor_edit=0x7f090000;

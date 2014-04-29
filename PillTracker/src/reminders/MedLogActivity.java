@@ -5,12 +5,9 @@ import java.util.Calendar;
 import businessLogic.mDb;
 
 import com.example.pilltracker.R;
-import com.example.pilltracker.R.id;
-import com.example.pilltracker.R.layout;
-import com.example.pilltracker.R.menu;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
@@ -25,7 +22,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 public class MedLogActivity extends Activity implements OnCheckedChangeListener {
 
@@ -37,21 +33,23 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 		// get layout
 		LinearLayout l = (LinearLayout) findViewById(R.id.mla_l);
 		// add reminders for today
+		/* already in onResume
 		mDb medFunctions = new mDb();
 		Calendar cal = Calendar.getInstance();
 		int day = cal.get(Calendar.DAY_OF_WEEK); // sun = 1; sat = 7
 		if (day == 1)
-			day = 7;
+			day = 6;
 		else
-			day -= 1;
+			day -= 2;
 		String[] todaysMeds = medFunctions.daysMeds(this, day);
 		Log.d("MedLogOnCreate", day + " " + todaysMeds.length);
 		// generate checkboxes
 		for (String s : todaysMeds) {
 			CheckBox cb = new CheckBox(this);
 			cb.setText(s);
+			Log.d("MedLogOnCreate string", s);
 			l.addView(cb);
-		}
+		} */
 
 	}
 	
@@ -70,15 +68,16 @@ public class MedLogActivity extends Activity implements OnCheckedChangeListener 
 		else
 			day -= 2;
 		String[] todaysMeds = medFunctions.daysMeds(this, day);
-		Log.d("MedLogOnCreate", day + " " + todaysMeds.length);
+		Log.d("MedLogOnResume", day + " " + todaysMeds.length);
 		// generate checkboxes
 		for (String s : todaysMeds) {
 			CheckBox cb = new CheckBox(this);
 			cb.setText(s);
+			Log.d("MedLogOnResume text", s);
 			cb.setOnCheckedChangeListener(this);
 			cb.setChecked(sharedPreferences.getBoolean(s, false));
 			l.addView(cb);
-		}
+		} 
 	}
 
 	@Override

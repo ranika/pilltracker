@@ -12,9 +12,9 @@ import entities.Medication;
 import entities.MedicationImpl;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.CheckBox;
 import android.widget.TimePicker;
 
@@ -30,12 +30,10 @@ public class mDb implements MedicationFunctions {
 		String name = ((EditText)v.findViewById(R.id.fepa_et1)).getText().toString();
 		String prescriber = ((EditText)v.findViewById(R.id.fepa_et2)).getText().toString();
 		String comments = ((EditText)v.findViewById(R.id.fepa_et3)).getText().toString();
-		boolean on = ((Switch)v.findViewById(R.id.fepa_s1)).isChecked();
+		boolean on = ((CheckBox)v.findViewById(R.id.fepa_s1)).isChecked();
 		//ArrayList<Integer> days = new ArrayList<Integer>();
 		StringBuffer days = new StringBuffer(); 
 		// check days
-		if (((CheckBox)v.findViewById(R.id.fepa_cb0)).isChecked())
-			days.append(0);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb1)).isChecked())
 			days.append(1);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb2)).isChecked())
@@ -48,6 +46,8 @@ public class mDb implements MedicationFunctions {
 			days.append(5);
 		if (((CheckBox)v.findViewById(R.id.fepa_cb6)).isChecked())
 			days.append(6);
+		if (((CheckBox)v.findViewById(R.id.fepa_cb0)).isChecked())
+			days.append(0);
 		TimePicker t = ((TimePicker)v.findViewById(R.id.fepa_tp1)); 
 		int time_h = t.getCurrentHour();
 		int time_m = t.getCurrentMinute();
@@ -55,7 +55,8 @@ public class mDb implements MedicationFunctions {
 		// add to database
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		mDb.createDetails(id, name, prescriber, comments);
-		mDb.createReminder(id, time_h, time_m, Integer.parseInt(days.toString()), on);
+		mDb.createReminder(id, time_h, time_m, days.toString(), on);
+		Log.d("mDb userInputToDatabase", days.toString());
 	}
 
 	@Override
@@ -64,8 +65,8 @@ public class mDb implements MedicationFunctions {
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		Integer[] allIds = idMap.values().toArray(new Integer[idMap.values().size()]);
 		for (Integer i : allIds) {
-			// [hour0, min0, day0, on0, hour1, min1, day1, on1, ...]
-			ArrayList<Integer> resultList = mDb.readReminder(i);
+			// [hour0, min0, day0, on0]
+			ArrayList<String> resultList = mDb.readReminder(i);
 			// [name, prescriber, comments]
 			String[] medNames = mDb.readDetails(i);
 			String name = medNames[0];
@@ -76,7 +77,7 @@ public class mDb implements MedicationFunctions {
 			int[] time_m = new int[numReminders];
 			int[] days = new int[numReminders];
 			// only check db if reminders exist
-			int on = (numReminders > 0) ? resultList.get(3) : 0;
+			int on = (numReminders > 0) ? Integer.parseInt(resultList.get(3)) : 0;
 			Medication m = new MedicationImpl(name, prescriber, comments, time_h, time_m, days, on, i);
 			results.add(m);
 		}
@@ -107,8 +108,9 @@ public class mDb implements MedicationFunctions {
 		StringBuffer sb = null;
 		for (Integer i : allIds) {
 			// [hour0, min0, day0, on0]
-			ArrayList<Integer> resultList = mDb.readReminder(i);
-			if (resultList.get(2) == day) {
+			ArrayList<String> resultList = mDb.readReminder(i);
+			Log.d("daysMeds", resultList.get(2).toString());
+			if (resultList.get(2).contains(String.valueOf(day))) {
 				sb = new StringBuffer();
 				sb.append(resultList.get(0));
 				sb.append(":");
@@ -137,14 +139,19 @@ public class mDb implements MedicationFunctions {
 	}
 
 	@Override
-	public int[] getTimes(Context c, int id) {
+	public ArrayList<String> getTimes(Context c, int id) {
 		medDatabase mDb = new medDatabase(c, null, null, 0);
-		ArrayList<Integer> resultList = mDb.readReminder(id);
+		ArrayList<String> resultList = mDb.readReminder(id);
 		int[] result = new int[resultList.size()];
 		for (int i = 0; i < result.length; i++) {
-			result[i] = resultList.get(i);
+			result[i] = Integer.parseInt(resultList.get(i));
 		}
-		return result;
+		return resultList;
+	}
+	
+	public void setTimes(Context c, int id, int hour, int min, String day, boolean on) {
+		medDatabase mDb = new medDatabase(c, null, null, 0);
+		mDb.createReminder(id, hour, min, day, on);
 	}
 
 	public void remove(Context c, int id) {

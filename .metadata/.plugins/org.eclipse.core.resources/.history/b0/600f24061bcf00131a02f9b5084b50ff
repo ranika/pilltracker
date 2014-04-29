@@ -1,0 +1,113 @@
+package reminders;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.example.pilltracker.R;
+
+import entities.Doctor;
+import entities.Medication;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.support.v4.app.Fragment;
+
+public class RemindersActivity extends Activity {
+	
+	private final Context thisC = this;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.f_reminders_remindersactivity);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.reminders, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.f_reminders_remindersactivity,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	// private class for managing listView
+	private class RemArrayAdapter<MedicationImpl> extends ArrayAdapter<MedicationImpl> {
+
+		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+		
+		public RemArrayAdapter(Context context, int resource,
+				List<MedicationImpl> objects) {
+			super(context, resource, objects);
+			Medication m = null;
+			// add medication names to list view adapter
+			for (int i = 0; i < objects.size(); i++) {
+				m = (Medication) objects.get(i);
+				mIdMap.put(m.getName(), i);
+			}
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = (LayoutInflater) thisC.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View rowView = inflater.inflate(R.layout.remitem, parent, false);
+			CheckBox mainCb = (CheckBox) rowView.findViewById(R.id.cb);
+			String completeStr = ((Medication) getItem(position)).getName();
+			mainCb.setText(completeStr);
+			Log.d("reminderText", completeStr);
+		    return rowView;
+		}
+		
+		@Override
+		public long getItemId(int position) {
+			String item = ((Medication) getItem(position)).getName();
+			return mIdMap.get(item);
+		}
+			
+		// IDs not guaranteed to stay consistent
+		@Override
+		public boolean hasStableIds() {
+			return false;
+		}
+			
+	} // private class ends
+
+}

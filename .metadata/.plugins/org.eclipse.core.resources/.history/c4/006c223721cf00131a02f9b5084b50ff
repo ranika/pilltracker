@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pilltracker"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.pilltracker.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="reminders.MedLogActivity"
+            android:label="@string/title_activity_med_log"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="prescriptions.PrescriptionActivity"
+            android:label="@string/title_activity_prescription"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="doctors.DoctorsActivity"
+            android:label="@string/title_activity_doctors"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="miscScreens.NotesActivity"
+            android:label="@string/title_activity_notes"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="miscScreens.PharmaciesActivity"
+            android:label="@string/title_activity_pharmacies"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="prescriptions.EditPrescriptionActivity"
+            android:label="@string/title_activity_edit_prescription"
+            android:parentActivityName="prescriptions.PrescriptionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.PrescriptionActivity" />
+        </activity>
+        <activity
+            android:name="doctors.DoctorEditActivity"
+            android:label="@string/title_activity_doctor_edit"
+            android:parentActivityName="doctors.DoctorsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.DoctorsActivity" />
+        </activity>
+        <activity
+            android:name="reminders.RemindersActivity"
+            android:label="@string/title_activity_reminders"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+        <activity
+            android:name="miscScreens.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.example.pilltracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pilltracker.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
