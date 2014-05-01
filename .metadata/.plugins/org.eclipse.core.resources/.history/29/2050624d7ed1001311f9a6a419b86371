@@ -152,7 +152,6 @@ public class mDb implements MedicationFunctions {
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		ArrayList<String> resultList = mDb.readReminder(id);
 		int[] result = new int[resultList.size()];
-		//trying to debug error 
 		for(int j = 0; j < result.length; j++) 
 		{
 			Log.d("getting times", resultList.get(j)); 

@@ -146,7 +146,6 @@ public class RemindersActivity extends Activity {
 					}
 					// on > off
 					else {
-						Log.d("rem alarm off", "cancelling an alarm");
 						AlarmService as = new AlarmService(); 
 						as.cancel(thisC, id); 
 						buttonView.setPaintFlags(buttonView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -157,7 +156,6 @@ public class RemindersActivity extends Activity {
 
 					@Override
 					public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-						Log.d("rem alarm on", "turning alarm on");
 						AlarmService as = new AlarmService(); 
 						hour = hourOfDay;
 						min = minute;

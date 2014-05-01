@@ -13,7 +13,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
 
 public class AlarmService extends Service {
 
@@ -26,8 +25,7 @@ public class AlarmService extends Service {
     
     public void createAlarms(int id, String days, int time_h, int time_m, Context c)
 	{ 
-		Log.d("AlarmService", "creating alarms"); 
-    	ArrayList<Alarm> temp; 
+		ArrayList<Alarm> temp; 
     	if(alarms.containsKey(id))
 		{
 			temp = alarms.get(id); 
@@ -113,12 +111,10 @@ public class AlarmService extends Service {
 			}
 		}
 		alarms.put(id, temp); 
-		Log.d("AlarmService", "size of alarms: " + alarms.size()); 
 	}
     
     public void start(Alarm a, Context c, long first, long interval)
     {
-    	Log.d("AlarmService", "start alarm"); 
     	a.setAlarm(c,first,interval); 
     }
     
@@ -135,14 +131,12 @@ public class AlarmService extends Service {
 	
 	public void cancel(Context c, int id)
 	{
-		Log.d("AlarmService", "cancel alarm: " + id); 
 		ArrayList<Alarm> r = alarms.get(id); 
 		for (Alarm a:r)
 		{
 			a.cancelAlarm(c); 
 		}
 		alarms.remove(id); 
-		Log.d("AlarmService", "size of alarms: " + alarms.size()); 
 	}
 
 

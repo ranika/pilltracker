@@ -135,7 +135,7 @@ public class AlarmService extends Service {
 	
 	public void cancel(Context c, int id)
 	{
-		Log.d("AlarmService", "cancel alarm: " + id); 
+		Log.d("AlarmService", "cancelling an alarm"); 
 		ArrayList<Alarm> r = alarms.get(id); 
 		for (Alarm a:r)
 		{
