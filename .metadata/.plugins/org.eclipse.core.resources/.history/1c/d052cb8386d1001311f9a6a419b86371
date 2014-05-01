@@ -122,18 +122,9 @@ public class AlarmService extends Service {
     	a.setAlarm(c,first,interval); 
     }
     
-    //this is for testing purposes 
-    public void create2(Context c)
-    {
-    	Log.d("AlarmService", "create 2"); 
-    	Alarm a = new Alarm(); 
-    	start2(a, c); 
-    }
-    
     //this one was more for testing purposes
     public void start2(Alarm a, Context c)
     {
-    	Log.d("AlarmService", "start 2"); 
     	a.setAlarm2(c); 
     }
 	

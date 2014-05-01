@@ -133,7 +133,6 @@ public class AlarmService extends Service {
     //this one was more for testing purposes
     public void start2(Alarm a, Context c)
     {
-    	Log.d("AlarmService", "start 2"); 
     	a.setAlarm2(c); 
     }
 	
