@@ -8,6 +8,7 @@ import businessLogic.mDb;
 
 import com.example.pilltracker.R;
 
+import entities.AlarmService;
 import entities.Medication;
 
 import android.app.Activity;
@@ -127,7 +128,7 @@ public class RemindersActivity extends Activity {
 				boolean checked;
 				ArrayList<String> times;
 				
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { 
 					String completeStr = buttonView.getText().toString();
 					Log.d("rem checkbox changed", completeStr + " " + isChecked);
 					mDb medDatabase = new mDb();
@@ -145,6 +146,8 @@ public class RemindersActivity extends Activity {
 					}
 					// on > off
 					else {
+						AlarmService as = new AlarmService(); 
+						as.cancel(thisC, id); 
 						buttonView.setPaintFlags(buttonView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 					}
 				}
@@ -153,12 +156,14 @@ public class RemindersActivity extends Activity {
 
 					@Override
 					public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+						AlarmService as = new AlarmService(); 
 						hour = hourOfDay;
 						min = minute;
 						// store in database
 						Log.d("remListenerStoring", times.get(2) + " " + checked);
 						mDb medDatabase = new mDb();
 						medDatabase.setTimes(thisC, id, hour, min, times.get(2), checked);
+						as.createAlarms(id, times.get(2), hour, min, thisC); 
 					}
 
 				};

@@ -1,0 +1,114 @@
+package entities;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeConstants;
+
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+
+public class AlarmService extends Service {
+
+    public void onCreate()
+    {
+        super.onCreate();       
+    }
+    
+    public void createAlarms(String days, int time_h, int time_m, Context c)
+	{ 
+		DateTime dt = new DateTime(); 
+		int currYear = dt.getYear(); 
+		int currMonth = dt.getMonthOfYear();
+		int currDate = dt.getDayOfMonth();
+		int currDay = dt.getDayOfWeek(); 
+		DateTime firstDate; 
+		long first; 
+		if(days.length() == 7)
+		{
+			Alarm a = new Alarm(); 
+			firstDate = new DateTime(currYear, currMonth, currDate+1, time_h, time_m); 
+			first = firstDate.getMillis();  
+			start(a, c, first, DateTimeConstants.MILLIS_PER_DAY); 
+		}
+		else 
+		{
+			for(int i=0; i<days.length(); i++)
+			{
+				//user is setting it for Monday
+				if(days.charAt(i) == '0')
+				{
+					 firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.MONDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				//Tuesday
+				else if(days.charAt(i) == '1')
+				{
+					if(currDay < DateTimeConstants.TUESDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.TUESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.TUESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m);
+				}
+				//Wednesday
+				else if(days.charAt(i) == '2')
+				{
+					if(currDay < DateTimeConstants.WEDNESDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.WEDNESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.WEDNESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				//Thursday
+				else if(days.charAt(i) == '3')
+				{
+					if(currDay < DateTimeConstants.THURSDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.THURSDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.THURSDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				//Friday
+				else if(days.charAt(i) == '4')
+				{
+					if(currDay < DateTimeConstants.FRIDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.FRIDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.FRIDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				//Saturday
+				else if(days.charAt(i) == '5')
+				{
+					if(currDay < DateTimeConstants.SATURDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.SATURDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.SATURDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				//Sunday
+				else
+				{
+					if(currDay < DateTimeConstants.SUNDAY)
+						firstDate = dt.withDayOfWeek(DateTimeConstants.SUNDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					else 
+						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.SUNDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+				}
+				first = firstDate.getMillis();  
+				start(c, first, DateTimeConstants.MILLIS_PER_WEEK);
+			}
+		}
+	}
+    
+    public void start(Alarm a, Context c, long first, long interval)
+    {
+    	a.setAlarm(c,first,interval); 
+    }
+    
+    //this one was more for testing purposes
+    public void start2(Alarm a, Context c)
+    {
+    	a.setAlarm2(c); 
+    }
+	
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+
+}

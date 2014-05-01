@@ -7,6 +7,8 @@ import prescriptions.PrescriptionActivity;
 import reminders.MedLogActivity;
 import reminders.RemindersActivity;
 import doctors.DoctorsActivity;
+import entities.Alarm;
+import entities.AlarmService;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -29,7 +31,7 @@ public class MainActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-        }
+        }  
         
         // only for testing, remove before actual demo
         //mDb medFunctions = new mDb();

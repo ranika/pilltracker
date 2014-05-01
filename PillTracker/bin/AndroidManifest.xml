@@ -6,6 +6,7 @@
     
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
      
     <uses-sdk
         android:minSdkVersion="10"
@@ -97,6 +98,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pilltracker.MainActivity" />
         </activity>
+        <receiver
+        android:name="entities.Alarm"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.NOTIFY" />
+        </intent-filter>
+    	</receiver>
     </application>
 
 </manifest>

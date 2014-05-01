@@ -1,13 +1,15 @@
 package businessLogic;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import com.example.pilltracker.R;
 
+import com.example.pilltracker.R;
 import database.medDatabase;
+import entities.AlarmService;
 import entities.Medication;
 import entities.MedicationImpl;
 
@@ -57,7 +59,13 @@ public class mDb implements MedicationFunctions {
 		mDb.createDetails(id, name, prescriber, comments);
 		mDb.createReminder(id, time_h, time_m, days.toString(), on);
 		Log.d("mDb userInputToDatabase", days.toString());
+		if(on)
+		{
+			AlarmService as = new AlarmService(); 
+			as.createAlarms(id, days.toString(), time_h, time_m, c); 
+		}
 	}
+	
 
 	@Override
 	public ArrayList<Medication> readFromDatabase(Context c) {
