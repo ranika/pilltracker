@@ -57,15 +57,12 @@ public class AlarmService extends Service {
 				//user is setting it for Monday
 				if(days.charAt(i) == '0')
 				{
-					if(currDay == 1)
-						firstDate = dt.withDayOfWeek(DateTimeConstants.MONDAY).withHourOfDay(time_h).withMinuteOfHour(time_m);
-					else
-						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.MONDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
+					 firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.MONDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 				}
 				//Tuesday
 				else if(days.charAt(i) == '1')
 				{
-					if(currDay <= DateTimeConstants.TUESDAY)
+					if(currDay < DateTimeConstants.TUESDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.TUESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.TUESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m);
@@ -73,7 +70,7 @@ public class AlarmService extends Service {
 				//Wednesday
 				else if(days.charAt(i) == '2')
 				{
-					if(currDay <= DateTimeConstants.WEDNESDAY)
+					if(currDay < DateTimeConstants.WEDNESDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.WEDNESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.WEDNESDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
@@ -81,7 +78,7 @@ public class AlarmService extends Service {
 				//Thursday
 				else if(days.charAt(i) == '3')
 				{
-					if(currDay <= DateTimeConstants.THURSDAY)
+					if(currDay < DateTimeConstants.THURSDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.THURSDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.THURSDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
@@ -89,7 +86,7 @@ public class AlarmService extends Service {
 				//Friday
 				else if(days.charAt(i) == '4')
 				{
-					if(currDay <= DateTimeConstants.FRIDAY)
+					if(currDay < DateTimeConstants.FRIDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.FRIDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.FRIDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
@@ -97,7 +94,7 @@ public class AlarmService extends Service {
 				//Saturday
 				else if(days.charAt(i) == '5')
 				{
-					if(currDay <= DateTimeConstants.SATURDAY)
+					if(currDay < DateTimeConstants.SATURDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.SATURDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.SATURDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
@@ -105,7 +102,7 @@ public class AlarmService extends Service {
 				//Sunday
 				else
 				{
-					if(currDay <= DateTimeConstants.SUNDAY)
+					if(currDay < DateTimeConstants.SUNDAY)
 						firstDate = dt.withDayOfWeek(DateTimeConstants.SUNDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
 					else 
 						firstDate = dt.plusWeeks(1).withDayOfWeek(DateTimeConstants.SUNDAY).withHourOfDay(time_h).withMinuteOfHour(time_m); 
