@@ -13,7 +13,9 @@ import entities.AlarmService;
 import entities.Medication;
 import entities.MedicationImpl;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -53,17 +55,31 @@ public class mDb implements MedicationFunctions {
 		TimePicker t = ((TimePicker)v.findViewById(R.id.fepa_tp1)); 
 		int time_h = t.getCurrentHour();
 		int time_m = t.getCurrentMinute();
-		idMap.put(name, id);
-		// add to database
-		medDatabase mDb = new medDatabase(c, null, null, 0);
-		mDb.createDetails(id, name, prescriber, comments);
-		mDb.createReminder(id, time_h, time_m, days.toString(), on);
-		Log.d("mDb userInputToDatabase", days.toString());
-		if(on)
-		{
-			Log.d("mDb", "reminders are on"); 
-			AlarmService as = new AlarmService(); 
-			as.createAlarms(id, days.toString(), time_h, time_m, c); 
+		if (days.length() != 0) {
+			idMap.put(name, id);
+			// add to database
+			medDatabase mDb = new medDatabase(c, null, null, 0);
+			mDb.createDetails(id, name, prescriber, comments);
+			mDb.createReminder(id, time_h, time_m, days.toString(), on);
+			Log.d("mDb userInputToDatabase", days.toString());
+			if(on)
+			{
+				Log.d("mDb", "reminders are on"); 
+				AlarmService as = new AlarmService(); 
+				as.createAlarms(id, days.toString(), time_h, time_m, c); 
+			}
+		}
+		else {
+			new AlertDialog.Builder(c)
+		    .setTitle("Not enough information.")
+		    .setMessage("Please check at least one day.")
+		    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		            // continue with edit screen
+		        }
+		     })
+		    .setIcon(android.R.drawable.ic_dialog_alert)
+		    .show();
 		}
 	}
 	
