@@ -8,7 +8,7 @@ public interface DatabaseFunctions {
 	
 	// use this to update database
 	// based on newest user input
-	public void userInputToDatabase(View v, Context c);
+	public boolean userInputToDatabase(View v, Context c);
 	
 	// use this to get information
 	// from database that will be

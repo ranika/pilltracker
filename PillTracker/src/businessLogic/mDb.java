@@ -28,7 +28,7 @@ public class mDb implements MedicationFunctions {
 	private static int idGenerator = 0;
 	
 	@Override
-	public void userInputToDatabase(View v, Context c) {
+	public boolean userInputToDatabase(View v, Context c) {
 		int id = mDb.idGenerator++;
 		// find text information
 		String name = ((EditText)v.findViewById(R.id.fepa_et1)).getText().toString();
@@ -68,18 +68,10 @@ public class mDb implements MedicationFunctions {
 				AlarmService as = new AlarmService(); 
 				as.createAlarms(id, days.toString(), time_h, time_m, c); 
 			}
+			return true;
 		}
 		else {
-			new AlertDialog.Builder(c)
-		    .setTitle("Not enough information.")
-		    .setMessage("Please check at least one day.")
-		    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-		        public void onClick(DialogInterface dialog, int which) { 
-		            // continue with edit screen
-		        }
-		     })
-		    .setIcon(android.R.drawable.ic_dialog_alert)
-		    .show();
+			return false;
 		}
 	}
 	

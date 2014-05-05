@@ -16,7 +16,7 @@ import entities.DoctorImpl;
 public class dDb implements doctorFunctions{
 
 	@Override
-	public void userInputToDatabase(View v, Context c) {
+	public boolean userInputToDatabase(View v, Context c) {
 		String name = ((EditText)v.findViewById(R.id.fdea_et1)).getText().toString();
 		String phone = ((EditText)v.findViewById(R.id.fdea_et2)).getText().toString();
 		String email = ((EditText)v.findViewById(R.id.fdea_et3)).getText().toString();
@@ -25,6 +25,7 @@ public class dDb implements doctorFunctions{
 		int id = d.getId();
 		docDatabase db = new docDatabase(c, null, null, 0);
 		db.createDoctor(id, name, phone, email, address);
+		return true;
 	}
 
 	@Override

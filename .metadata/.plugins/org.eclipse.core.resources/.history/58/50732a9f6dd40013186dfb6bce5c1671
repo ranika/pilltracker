@@ -6,15 +6,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.joda.time.DateTime;
 
 import com.example.pilltracker.R;
-
 import database.medDatabase;
+import entities.AlarmService;
 import entities.Medication;
 import entities.MedicationImpl;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -54,28 +55,34 @@ public class mDb implements MedicationFunctions {
 		TimePicker t = ((TimePicker)v.findViewById(R.id.fepa_tp1)); 
 		int time_h = t.getCurrentHour();
 		int time_m = t.getCurrentMinute();
-		idMap.put(name, id);
-		// add to database
-		medDatabase mDb = new medDatabase(c, null, null, 0);
-		mDb.createDetails(id, name, prescriber, comments);
-		mDb.createReminder(id, time_h, time_m, days.toString(), on);
-		Log.d("mDb userInputToDatabase", days.toString());
-		if(on)
-			createAlarms(days.toString(), time_h, time_m); 
-	}
-	
-	public void createAlarms(String days, int time_h, int time_m)
-	{ 
-		DateTime dt = new DateTime(); 
-		int currYear = dt.getYear(); 
-		int currMonth = dt.getMonthOfYear();
-		int currDay = dt.getDayOfWeek(); 
-		int currDate = dt.getDayOfMonth(); 
-		if(days.length() == 7)
-		{
-			DateTime firstDate = new DateTime(currYear, currMonth, currDay+1, time_h, time_m); 
+		if (days.length() != 0) {
+			idMap.put(name, id);
+			// add to database
+			medDatabase mDb = new medDatabase(c, null, null, 0);
+			mDb.createDetails(id, name, prescriber, comments);
+			mDb.createReminder(id, time_h, time_m, days.toString(), on);
+			Log.d("mDb userInputToDatabase", days.toString());
+			if(on)
+			{
+				Log.d("mDb", "reminders are on"); 
+				AlarmService as = new AlarmService(); 
+				as.createAlarms(id, days.toString(), time_h, time_m, c); 
+			}
+		}
+		else {
+			new AlertDialog.Builder(c)
+		    .setTitle("Not enough information.")
+		    .setMessage("Please check at least one day.")
+		    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		            // continue with edit screen
+		        }
+		     })
+		    .setIcon(android.R.drawable.ic_dialog_alert)
+		    .show();
 		}
 	}
+	
 
 	@Override
 	public ArrayList<Medication> readFromDatabase(Context c) {
@@ -161,6 +168,11 @@ public class mDb implements MedicationFunctions {
 		medDatabase mDb = new medDatabase(c, null, null, 0);
 		ArrayList<String> resultList = mDb.readReminder(id);
 		int[] result = new int[resultList.size()];
+		//trying to debug error 
+		for(int j = 0; j < result.length; j++) 
+		{
+			Log.d("getting times", resultList.get(j)); 
+		}
 		for (int i = 0; i < result.length; i++) {
 			result[i] = Integer.parseInt(resultList.get(i));
 		}
